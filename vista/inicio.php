@@ -110,7 +110,7 @@
     </header>
 
     <article class="mx-80 bg-red">
-        <h1 class="text-3xl">Hola Juan!, Bienvenido</h1>
+        <h1 class="text-3xl">Hola Juan! eres gay, Bienvenido</h1>
     </article>
 
 
