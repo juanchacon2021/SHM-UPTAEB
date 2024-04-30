@@ -28,7 +28,7 @@
                     <label for="">Recuerdame</label>
                 </div>
                 <div>
-                    <a href="#" class="text-indigo-800 font-se">¿Olvidaste tu Contraseña?</a>
+                    <a href="#" class="text-indigo-800 font-se">Olvidaste tu Contraseña?</a>
                 </div>
             </div>
             <div class="mt-5">
