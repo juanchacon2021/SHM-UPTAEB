@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <title>Sistema de Historia Medica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="flex justify-center items-center h-screen bg-fixed" id="fondo">
@@ -28,11 +28,11 @@
                     <label for="">Recuerdame</label>
                 </div>
                 <div>
-                    <a href="#" class="text-indigo-800 font-se">Olvidaste tu Contraseña?</a>
+                    <a href="#" class="text-yellow-700 font-se">Olvidaste tu Contraseña?</a>
                 </div>
             </div>
             <div class="mt-5">
-                <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-white hover:text-indigo-700 font-semibold">Ingresar</button>
+                <button type="submit" class="border-2 border-yellow-700 bg-yellow-500 text-white py-1 w-full rounded-md hover:bg-white hover:text-yellow-500 font-semibold">Ingresar</button>
             </div>
             <div class="mt-5">
                 <a href="?pagina=inicio">inicio</a>
