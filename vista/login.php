@@ -34,6 +34,9 @@
             <div class="mt-5">
                 <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white py-1 w-full rounded-md hover:bg-white hover:text-indigo-700 font-semibold">Ingresar</button>
             </div>
+            <div class="mt-5">
+                <a href="?pagina=inicio">inicio</a>
+</div>
         </div>
     </div>
 </body>
