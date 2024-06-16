@@ -1,7 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 #fondo {
     background-image: url(../img/fondo1.jpg);
     background-color: black;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     object-fit:cover;
+}
+
+.inicio {
+    text-align: right;
+    font-family: 'Chivo';
+}
+
+.texto-bienvenida {
+    padding-left: 300px;
+    font-size: 2rem;
+}
+
+.card-inicio {
+    display: flex;
+}
+
+.card-inicio h2 {
+    font-weight: 600;
+    font-family: 'Sora';
+}
+
+.card-inicio h1 {
+    font-family: 'Sora';
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgb(238, 117, 5);
+    margin: 0;
+}
+
+.card-text {
+    margin-left: 2rem;
+}
+
+.boton {
+    font-family: 'Sora';
+    background-color: rgb(252, 156, 30);
+    border-radius: 0.5rem;
+    border: 0.5rem solid rgb(252, 156, 30);
+    color: white;
+}
+
+.boton:hover {
+    background-color: rgb(206, 129, 29);
+    border: 0.5rem solid rgb(206, 129, 29);
+}
+
+.form-paciente {
+    padding: 2rem 2rem 0rem 25rem;
+}
+
+.contenedor {
+    font-family: 'Sora';
+}
+
+.contenedor h1 {
+    font-weight: 900;
+}
+
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.formulario-dos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.formulario-tres {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.dos-columnas {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+
+.cuatro-columnas {
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+input, select{
+    width: 100%;
+}
+
+legend {
+    font-weight: 900;
+}
+
+@media (max-width: 872px) {
+    
 }
