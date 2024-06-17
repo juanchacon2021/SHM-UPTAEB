@@ -106,6 +106,29 @@ legend {
     font-weight: 900;
 }
 
+table {
+    border-radius: 20px;
+}
+
+thead {
+    border-radius: 20px;
+}
+
+th {
+    padding: 2rem 4.5rem;
+    background-color: rgb(255, 255, 255);
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 227, 189);
+}
+
+td {
+    margin: 1rem 3rem 1rem 3rem;
+}
+
 @media (max-width: 872px) {
     
 }
