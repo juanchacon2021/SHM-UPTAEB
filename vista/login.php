@@ -1,5 +1,5 @@
 <?php
-    require '../comunes/librerias.php';
+    require 'comunes/librerias.php';
 ?>
 <body>
     <div class="flex justify-center items-center h-screen bg-fixed" id="fondo">
@@ -27,6 +27,9 @@
                 <button type="submit" class="border-2 border-yellow-700 bg-yellow-500 text-white py-1 w-full rounded-md hover:bg-white hover:text-yellow-500 font-semibold">Ingresar</button>
             </div>
         </div>
+        <div class="mt-5">
+                <button type="submit" class="border-2 border-yellow-700 bg-yellow-500 text-white py-1 w-full rounded-md hover:bg-white hover:text-yellow-500 font-semibold"><a href="?pagina=inicio">ir a inicio. Boton de prueba</a></button>
+            </div>
     </div>
 </body>
 </html>

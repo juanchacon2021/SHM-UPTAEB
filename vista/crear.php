@@ -80,14 +80,13 @@
             $resultado = mysqli_query($db, $query);
 
         // Aqui se Redireccionara al usuario
-            if($resultado) {
 
-                header('Location: ../vista/crear.php?resultado=1');
-            }
-        }
+        
 
-    }
-    
+
+        
+
+
     require '../comunes/librerias.php';
     require '../comunes/header.php'
 ?>
