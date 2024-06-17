@@ -30,8 +30,8 @@
         
 
 
-    require '../comunes/librerias.php';
-    require '../comunes/header.php'
+    require 'comunes/librerias.php';
+    require 'comunes/header.php'
 ?>
 
 <body class="form-paciente bg-gray-100">
