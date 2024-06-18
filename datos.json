@@ -1,0 +1,24 @@
+[
+	{
+		"cedula" : 24550967,
+		"nombre" : "Jorge Luis",
+		"apellido" : "Patiño Torres",
+		"fechanac" : "1999-02-20",
+		"edad" : 28,
+		"telefono" : 412075429,
+		"ocupacion" : "Gerente de Negros",
+		"direccion" : "Pedro Leon Torres & Calle 58",
+		"estcivil" : 1
+	},
+	{
+		"cedula" : 30128924,
+		"nombre" : "Juan",
+		"apellido" : "Chacon",
+		"fechanac" : "2004-04-30",
+		"edad" : 20,
+		"telefono" : 412075429,
+		"ocupacion" : "programador",
+		"direccion" : "cerritos blanco vereda 13",
+		"estcivil" : 1
+	}
+]

@@ -1,0 +1,1 @@
+SELECT * FROM shm_uptaeb.paciente;

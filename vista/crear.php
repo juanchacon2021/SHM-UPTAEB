@@ -1,4 +1,7 @@
 <?php
+
+
+
     // Aqui debe estar la Base de Datos
     require '../includes/database.php';
     $db = conectarBD();
@@ -23,16 +26,16 @@
 
 // aqui se Ejecutara el codigo despues de que el usuario envia el formulario
         
-        if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $cedula = mysqli_real_escape_string( $db, $_POST['cedula'] );
-            $nombre = mysqli_real_escape_string( $db, $_POST['nombre'] );
-            $apellido = mysqli_real_escape_string( $db, $_POST['apellido'] );
-            $fechanac = mysqli_real_escape_string( $db, $_POST['fechanac'] );
-            $edad = mysqli_real_escape_string( $db, $_POST['edad'] );
-            $telefono = mysqli_real_escape_string( $db, $_POST['telefono'] );
-            $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
-            $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
-            $estcivil = mysqli_real_escape_string( $db, $_POST['estcivil'] );
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $cedula = mysqli_real_escape_string( $db, $_POST['cedula'] );
+        $nombre = mysqli_real_escape_string( $db, $_POST['nombre'] );
+        $apellido = mysqli_real_escape_string( $db, $_POST['apellido'] );
+        $fechanac = mysqli_real_escape_string( $db, $_POST['fechanac'] );
+        $edad = mysqli_real_escape_string( $db, $_POST['edad'] );
+        $telefono = mysqli_real_escape_string( $db, $_POST['telefono'] );
+        $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
+        $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
+        $estcivil = mysqli_real_escape_string( $db, $_POST['estcivil'] );
 
 
         // Aqui se validara la informacion antes de enviar
@@ -80,15 +83,18 @@
             $resultado = mysqli_query($db, $query);
 
         // Aqui se Redireccionara al usuario
+        if($resultado) {
+            // Redireccionar al usuario
 
+            header('Location: pacientes.php?resultado=1');
+        }
         
-
-
-        
+        }
+    }
 
 
     require '../comunes/librerias.php';
-    require '../comunes/header.php'
+    require '../comunes/head.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
@@ -99,7 +105,13 @@
         <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-96">&nbsp; &nbsp; &nbsp; Agregar Paciente &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-amber-500 font-bold">   Nuevo Paciente</span></p>
         <p class="text-zinc-400 py-2 my-2">Las casillas con * son obligatorias</p>
 
-        <a href="vista/inicio" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
+        <a href="pacientes.php" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
+
+        <?php foreach ($errores as $error): ?>
+        <div class="error" style="padding: .5rem; text-align: center; color: white; font-weight: 900; text-transform: uppercase; margin: 1rem 0; background-color: rgb(255, 28, 28);">
+            <?php echo $error; ?>
+        </div>
+        <?php endforeach; ?>
 
         <h1 class="text-2xl py-4">Informacion General</h1>
         <form action="../vista/crear.php"  method="POST"  enctype="multipart/form-data">
@@ -107,49 +119,49 @@
                 <div>
                     <label for="">Nombres *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="nombre" id="nombre" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="nombre" id="nombre" value="<?php $nombre ?>">
                 </div>
 
                 <div>
                     <label for="">Apellidos *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="apellido" id="apellido" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="apellido" id="apellido" value="<?php $apellido ?>">
                 </div>
                 
                 <div>
                     <label for="">Cedula *</label>
                     <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedula" id="cedula" value="<?php ?>">
+                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedula" id="cedula" value="<?php $cedula ?>">
                 </div>
 
                 <div>
                     <label for="">Fecha de Nacimiento *</label>
                     <br>
-                    <input type="date" class="bg-gray-200 rounded-lg border-white" name="fechanac" id="fechanac" value="<?php ?>">
+                    <input type="date" class="bg-gray-200 rounded-lg border-white" name="fechanac" id="fechanac" value="<?php $fechanac ?>">
                 </div>
 
                 <div>
                     <label for="">Edad *</label>
                     <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="edad" id="edad" value="<?php ?>">
+                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="edad" id="edad" value="<?php $edad ?>">
                 </div>
 
                 <div>
                     <label for="">Telefono *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php $telefono ?>">
                 </div>
 
                 <div>
                     <label for="">Ocupacion *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="ocupacion" id="ocupacion" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="ocupacion" id="ocupacion" value="<?php $ocupacion ?>">
                 </div>
 
                 <div>
                     <label for="">Direccion *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="direccion" id="direccion" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="direccion" id="direccion" value="<?php $direccion?>">
                 </div>
 
                 <div>
@@ -357,7 +369,4 @@
             <input type="submit" value="Guardar Historia Medica" class="boton float-end cursor-pointer w-80 py-2 px-4 my-10">    
         </form>
     </section>
-
-    
-
 </body>
