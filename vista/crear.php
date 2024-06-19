@@ -1,9 +1,6 @@
 <?php
-
-
-
     // Aqui debe estar la Base de Datos
-    require 'includes/database.php';
+    require '../includes/database.php';
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
@@ -93,8 +90,8 @@
     }
 
 
-    require 'comunes/librerias.php';
-    require 'comunes/head.php';
+    require '../comunes/librerias.php';
+    require '../comunes/head.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
@@ -149,7 +146,7 @@
                 <div>
                     <label for="">Telefono *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php $telefono ?>">
+                    <input type="tel" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php $telefono ?>">
                 </div>
 
                 <div>
