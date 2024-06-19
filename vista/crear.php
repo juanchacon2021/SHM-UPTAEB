@@ -3,7 +3,7 @@
 
 
     // Aqui debe estar la Base de Datos
-    require '../includes/database.php';
+    require 'includes/database.php';
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
@@ -93,8 +93,8 @@
     }
 
 
-    require '../comunes/librerias.php';
-    require '../comunes/head.php';
+    require 'comunes/librerias.php';
+    require 'comunes/head.php';
 ?>
 
 <body class="form-paciente bg-gray-100">

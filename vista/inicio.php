@@ -1,6 +1,6 @@
-<?php require_once("../comunes/librerias.php"); ?>
+<?php require_once("comunes/librerias.php"); ?>
 <body class="bg-gray-100">
-<?php require_once("../comunes/head.php"); ?>
+<?php require_once("comunes/head.php"); ?>
     <article class="inicio bg-orange-100 p-4">
         <h1 class="texto-bienvenida">Hola<?php  ?>, Bienvenido</h1>
     </article>

@@ -1,7 +1,7 @@
 <?php
 
     // Importar la conexion
-    require '../includes/database.php';
+    require 'includes/database.php';
     $db = conectarBD();
 
 
@@ -16,8 +16,8 @@
     $resultado = $_GET['resultado'] ?? null;
     
 
-    require '../comunes/librerias.php';
-    require '../comunes/head.php';
+    require 'comunes/librerias.php';
+    require 'comunes/head.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
