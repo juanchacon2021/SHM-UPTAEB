@@ -1,6 +1,6 @@
 <?php
     // Aqui debe estar la Base de Datos
-    require '../includes/database.php';
+    require 'includes/database.php';
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
@@ -82,16 +82,16 @@
         // Aqui se Redireccionara al usuario
         if($resultado) {
             // Redireccionar al usuario
-
-            header('Location: pacientes.php?resultado=1');
+           
+            header('Location: ?pagina=pacientes');
         }
         
         }
     }
 
 
-    require '../comunes/librerias.php';
-    require '../comunes/head.php';
+    require 'comunes/librerias.php';
+    require 'comunes/head.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
@@ -102,7 +102,7 @@
         <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-96">&nbsp; &nbsp; &nbsp; Agregar Paciente &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-amber-500 font-bold">   Nuevo Paciente</span></p>
         <p class="text-zinc-400 py-2 my-2">Las casillas con * son obligatorias</p>
 
-        <a href="pacientes.php" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
+        <a href="?pagina=pacientes" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
 
         <?php foreach ($errores as $error): ?>
         <div class="error" style="padding: .5rem; text-align: center; color: white; font-weight: 900; text-transform: uppercase; margin: 1rem 0; background-color: rgb(255, 28, 28);">
@@ -111,7 +111,7 @@
         <?php endforeach; ?>
 
         <h1 class="text-2xl py-4">Informacion General</h1>
-        <form action="../vista/crear.php"  method="POST"  enctype="multipart/form-data">
+        <form action="?pagina=crear"  method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
                 <div>
                     <label for="">Nombres *</label>

@@ -1,7 +1,7 @@
 <?php
 
     // Importar la conexion
-    require '../includes/database.php';
+    require 'includes/database.php';
     $db = conectarBD();
 
     // Escribir el Query
@@ -15,8 +15,8 @@
     $resultado = $_GET['resultado'] ?? null;
     
 
-    require '../comunes/librerias.php';
-    require '../comunes/head.php';
+    require 'comunes/librerias.php';
+    require 'comunes/head.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
@@ -31,7 +31,7 @@
             <p class="" style="padding: .5rem; text-align: center; color: white; font-weight: 900; text-transform: uppercase; margin: 1rem 0; background-color: green; ">Paciente Eliminado Correctamente</p> 
         <?php endif; ?>
 
-        <a href="vista/crear.php" class="boton">Registrar Paciente</a>
+        <a href="?pagina=crear" class="boton">Registrar Paciente</a>
     
         <table class="my-10">
             <thead>
@@ -58,7 +58,7 @@
         </table>
     </section>
 
-    <script script="../js/script.js"></script>
+    <script script="js/script.js"></script>
 
 </body>
     
