@@ -47,7 +47,7 @@
                 <div class=" leading-7 text-left text-sm font-thin mt-2 w-4/5 mx-auto" id="submenu">
 
                     <!--    PERSONAL: Registra a un nuevo usuario otorgandole los permisos que el usuario mayor (Doctor) quiera que ese usuario tenga-->
-                    <a href=""><h1 class="cursor-pointer p-2 hover:bg-yellow-500 rounded-md mt-1 text-lg">Personal</h1></a>
+                    <a href="?pagina=personal"><h1 class="cursor-pointer p-2 hover:bg-yellow-500 rounded-md mt-1 text-lg">Personal</h1></a>
 
                     <!--    PERMISOS: Muestra la lista de permisos que tiene el usuario ingresado ejemplo
                     Al doctor le deben aparecer todos los permisos en cambio a los usuarios que creo el doctor solo le deben
