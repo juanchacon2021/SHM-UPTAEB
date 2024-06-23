@@ -14,4 +14,20 @@ function Openbar() {
     document.querySelector('.sidebar').classList.toggle('left-[-300px]')
 }
 
+window.addEventListener("scroll", function () {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollToTopBtn = document.getElementById("scroll-to-top");
+  if (scrollTop > 1) {
+    scrollToTopBtn.classList.remove("d-none");
+  } else {
+    scrollToTopBtn.classList.add("d-none");
+  }
+});
 
+$(document).ready(function() {
+  $(".btn").hover(function() {
+    $(this).addClass("btn-hover");
+  }, function() {
+    $(this).removeClass("btn-hover");
+  });
+});

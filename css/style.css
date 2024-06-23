@@ -3,8 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 #fondo {
-    background-image: url(img/fondo1.jpg);
-    background-color: black;
+    background-image: url(../img/fondo.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     object-fit:cover;
@@ -30,11 +29,10 @@
 }
 
 .card-inicio h1 {
+    font-weight: 900;
     font-family: 'Sora';
+    color: rgb(220 38 38);
     font-size: 2rem;
-    font-weight: 800;
-    color: rgb(238, 117, 5);
-    margin: 0;
 }
 
 .card-text {
@@ -43,16 +41,30 @@
 
 .boton {
     font-family: 'Sora';
-    background-color: rgb(252, 156, 30);
+    background-color: rgb(220 38 38);
     border-radius: 0.5rem;
-    border: 0.5rem solid rgb(252, 156, 30);
+    border: 0.5rem solid rgb(220 38 38);
+    color: white;
+}
+
+.botonazul {
+    font-family: 'Sora';
+    background-color: rgb(16, 175, 63);
+    border-radius: 0.5rem;
+    border: 0.5rem solid rgb(16, 175, 63);
     color: white;
 }
 
 .boton:hover {
-    background-color: rgb(206, 129, 29);
-    border: 0.5rem solid rgb(206, 129, 29);
+    background-color: rgb(153, 27, 27);
+    border: 0.5rem solid rgb(153, 27, 27);
 }
+
+.boton-azul:hover {
+    background-color: rgb(17, 119, 48);
+    border: 0.5rem solid rgb(17, 119, 48);
+}
+
 
 .form-paciente {
     padding: 2rem 2rem 0rem 25rem;
@@ -106,10 +118,6 @@ legend {
     font-weight: 900;
 }
 
-thead {
-    border-radius: 20px;
-}
-
 th {
     padding: 2rem 4.5rem;
     background-color: rgb(255, 255, 255);
@@ -117,11 +125,7 @@ th {
 
 tr {
     text-align: center;
-    background-color: rgb(255, 227, 189);
-}
-
-td {
-    margin: 1rem 10rem 1rem 3rem;
+    background-color: rgb(255, 230, 230);
 }
 
 @media (max-width: 872px) {

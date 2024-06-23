@@ -1,29 +1,42 @@
 <?php
-    // Aqui debe estar la Base de Datos
-    require 'includes/database.php';
+    // Validar la URL por id valido
+    $cedula = $_GET['cedula'];
+    $cedula = filter_var($cedula, FILTER_VALIDATE_INT);
+
+//    if(!$cedula) {
+//        header('Location: ?paciente=crear');
+//    }    
+
+    // Base de Datos
+    require '../includes/database.php';
     $db = conectarBD();
 
-    // Aqui se va a consultar para obtener los pacientes de la base de datos
-    $consulta = 'SELECT * FROM paciente';
+    // Obtener los datos de la propiedad
+    $consulta = "SELECT * FROM paciente WHERE cedula = ${cedula}";
     $resultado = mysqli_query($db, $consulta);
+    $paciente = mysqli_fetch_assoc($resultado);
 
-    // aqui se hara el arreglo junto con mensajes de errores
+
+    // Consultar para obtener los vendedores
+//    $consulta = 'SELECT * FROM paciente WHERE id =';
+//    $resultado = mysqli_query($db, $consulta);
+
+    // Arreglo con mensajes de errores
     $errores = [];
 
-    $cedula = '';
-    $nombre = '';
-    $apellido = '';
-    $fechanac = '';
-    $edad = '';
-    $telefono = '';
-    $ocupacion = '';
-    $direccion = '';
-    $estcivil = '';
+    $cedula = $paciente['cedula'];
+    $nombre = $paciente['nombre'];
+    $apellido = $paciente['apellido'];
+    $fechanac = $paciente['fechanac'];
+    $edad = $paciente['edad'];
+    $telefono = $paciente['telefono'];
+    $ocupacion = $paciente['ocupacion'];
+    $direccion = $paciente['direccion'];
+    $estcivil = $paciente['estcivil'];
 
-
-// aqui se Ejecutara el codigo despues de que el usuario envia el formulario
-        
+// Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
         $cedula = mysqli_real_escape_string( $db, $_POST['cedula'] );
         $nombre = mysqli_real_escape_string( $db, $_POST['nombre'] );
         $apellido = mysqli_real_escape_string( $db, $_POST['apellido'] );
@@ -33,7 +46,6 @@
         $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
         $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
         $estcivil = mysqli_real_escape_string( $db, $_POST['estcivil'] );
-
 
         // Aqui se validara la informacion antes de enviar
         if(!$cedula) {
@@ -72,27 +84,29 @@
             $errores[] = "El estado civil es obligatorio";
         }
 
-        // aqui se revisara que el arreglo de errores este vacio para enviar
+
+        // Revisar que el array de errores este vacio
         if(empty($errores)) {
-            $query = " INSERT INTO paciente(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estcivil ) VALUES ( '$cedula',
-            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estcivil' ) ";
-    
+            $query = " UPDATE paciente SET nombre = '{$nombre}', apellido = '{$apellido}', fechanac = '{$fechanac}', edad = '{$edad}', telefono = '{$telefono}', 
+            ocupacion = '{$ocupacion}', direccion = '{$direccion}', estcivil = '{$estcivil}' WHERE cedula = ${cedula} ";
+
+
             $resultado = mysqli_query($db, $query);
 
         // Aqui se Redireccionara al usuario
-        if($resultado) {
-            // Redireccionar al usuario
-           
-            header('Location: ?pagina=pacientes');
-        }
+            if($resultado) {
+                // Redireccionar al usuario
+            
+                header('Location: /Proyecto1/?pagina=pacientes');
+            }
         
         }
+        
     }
 
-
-    require 'comunes/librerias.php';
-    require 'comunes/head.php';
-    require 'comunes/modal.php';
+    require '../comunes/librerias.php';
+    require '../comunes/head.php';
+    require '../comunes/modal.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
@@ -112,54 +126,54 @@
         <?php endforeach; ?>
 
         <h1 class="text-2xl py-4">Informacion General</h1>
-        <form action="?pagina=crear" class="ffformulario" method="POST"  enctype="multipart/form-data">
+        <form class="ffformulario" method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
                 <div>
                     <label for="">Nombres *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="nombre" id="nombre" value="<?php $nombre ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="nombre" id="nombre" value="<?php echo $nombre ?>">
                 </div>
 
                 <div>
                     <label for="">Apellidos *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="apellido" id="apellido" value="<?php $apellido ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="apellido" id="apellido" value="<?php echo $apellido ?>">
                 </div>
                 
                 <div>
                     <label for="">Cedula *</label>
                     <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedula" id="cedula" value="<?php $cedula ?>">
+                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedula" id="cedula" value="<?php echo $cedula ?>">
                 </div>
 
                 <div>
                     <label for="">Fecha de Nacimiento *</label>
                     <br>
-                    <input type="date" class="bg-gray-200 rounded-lg border-white" name="fechanac" id="fechanac" value="<?php $fechanac ?>">
+                    <input type="date" class="bg-gray-200 rounded-lg border-white" name="fechanac" id="fechanac" value="<?php echo $fechanac ?>">
                 </div>
 
                 <div>
                     <label for="">Edad *</label>
                     <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="edad" id="edad" value="<?php $edad ?>">
+                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="edad" id="edad" value="<?php echo $edad ?>">
                 </div>
 
                 <div>
                     <label for="">Telefono *</label>
                     <br>
-                    <input type="tel" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php $telefono ?>">
+                    <input type="tel" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php echo $telefono ?>">
                 </div>
 
                 <div>
                     <label for="">Ocupacion *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="ocupacion" id="ocupacion" value="<?php $ocupacion ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="ocupacion" id="ocupacion" value="<?php echo $ocupacion ?>">
                 </div>
 
                 <div>
                     <label for="">Direccion *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="direccion" id="direccion" value="<?php $direccion?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="direccion" id="direccion" value="<?php echo $direccion?>">
                 </div>
 
                 <div>
@@ -367,24 +381,22 @@
             <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="registroExitosoModalLabel">¡Paciente Registrado!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>El paciente se ha registrado exitosamente!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
-                    </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="registroExitosoModalLabel">¡Paciente Modificado!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>El paciente se ha modificado exitosamente en el sistema.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-<!--            <input type="submit" value="Guardar Historia Medica" class="boton float-end cursor-pointer w-80 py-2 px-4 my-10">    
-        -->
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary m-8 p-3" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-toggle="modal" data-bs-target="#registroExitosoModal" data-dismiss="modal" data-timer="5000">Registrar Paciente</button>            
+                <button type="submit" class="btn btn-primary m-8 p-3" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-toggle="modal" data-bs-target="#registroExitosoModal" data-dismiss="modal" data-timer="5000">Modificar Paciente</button>            
             </div>
         </form>
 

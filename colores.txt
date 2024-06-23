@@ -1,0 +1,4 @@
+Rojo #FD5E53
+Blanco #F9FCFB
+Verde CLaro #B0EACD
+Verde Oscuro #21BF73

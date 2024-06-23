@@ -20,15 +20,15 @@
                     <label for="">Recuerdame</label>
                 </div>
                 <div>
-                    <a href="#" class="text-yellow-700 font-se">Olvidaste tu Contraseña?</a>
+                    <a href="#" class="text-red-600 font-se">Olvidaste tu Contraseña?</a>
                 </div>
             </div>
             <div class="mt-5">
-                <button type="submit" class="border-2 border-yellow-700 bg-yellow-500 text-white py-1 w-full rounded-md hover:bg-white hover:text-yellow-500 font-semibold">Ingresar</button>
+                <button type="submit" class="border-2 border-red-600 bg-red-600 text-white py-1 w-full rounded-md hover:bg-white hover:text-red-800 font-semibold">Ingresar</button>
             </div>
         </div>
         <div class="mt-5">
-                <button type="submit" class="border-2 border-yellow-700 bg-yellow-500 text-white py-1 w-full rounded-md hover:bg-white hover:text-yellow-500 font-semibold"><a href="?pagina=inicio">ir a inicio. Boton de prueba</a></button>
+                <button type="submit" class="border-2 border-red-600 bg-red-600 text-white py-1 w-full rounded-md hover:bg-white hover:text-red-800 font-semibold"><a href="?pagina=inicio">ir a inicio. Boton de prueba</a></button>
             </div>
     </div>
 </body>
