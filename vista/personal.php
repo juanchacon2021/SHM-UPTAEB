@@ -169,7 +169,7 @@
 
 <!-- MODAL DE REGISTRO EXITOSO -->
 
-            <button type="submit" class="botonazul btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="submit" class="boton btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Registrar Personal
             </button>
 
@@ -209,7 +209,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>correo</th>
-                    <th>Telefono</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
 
@@ -220,7 +220,18 @@
                     <td> <?php echo $personal['nombre']; ?> </td>
                     <td> <?php echo $personal['apellido']; ?></td>
                     <td> <?php echo $personal['correo']; ?></td>
-                    <td> <?php echo $personal['telefono']; ?></td>
+                    <td>
+                        <form action="" method="POST" class="" style="display: flex; justify-content: space-between;">
+                            
+                            <input type="hidden" name="cedula" value="<?php echo $paciente['cedula']; ?>">
+                        
+                            <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
+                        
+                            <a href="?pagina=modificarpersonal&cedula=<?php echo $personal['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
+                        </form>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
