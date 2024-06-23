@@ -14,6 +14,17 @@
     // Muestra mensaje condicional
     $resultado = $_GET['resultado'] ?? null;
     
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $cedula = $_POST['cedula'];
+        $cedula = filter_var($cedula, FILTER_VALIDATE_INT);
+    
+        if($cedula) {
+            // Eliminar el paciente
+            $query = "DELETE FROM paciente WHERE cedula = ${cedula}";
+            $resultado = mysqli_query($db, $query);
+        }
+
+    }    
 
     require 'comunes/librerias.php';
     require 'comunes/head.php';
@@ -60,7 +71,7 @@
                         
                             <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
-                        
+
                             <a href="vista/modificar.php?cedula=<?php echo $paciente['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
                         </form>
