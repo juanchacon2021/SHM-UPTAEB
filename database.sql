@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `shm_uptaeb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `shm_uptaeb`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: shm_uptaeb
@@ -30,8 +28,8 @@ CREATE TABLE `paciente` (
   `apellido` varchar(45) DEFAULT NULL,
   `fechanac` date DEFAULT NULL,
   `edad` int DEFAULT NULL,
-  `telefono` int DEFAULT NULL,
-  `ocupacion` varchar(45) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `ocupacion` varchar(200) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
   `estcivil` int DEFAULT NULL,
   PRIMARY KEY (`cedula`)
@@ -44,7 +42,7 @@ CREATE TABLE `paciente` (
 
 LOCK TABLES `paciente` WRITE;
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (11222333,'Manuel','Rodriguez','2004-08-20',20,412888888,'jefe','cerritos blanco vereda 13 entre calles 1 y 2',1),(14555444,'Anthoan','Gonzalez','1958-04-02',18,412888888,'jefe','cerritos blanco vereda 13 entre calles 1 y 2',1),(24550967,'Jorge Luis','Patiño Torres','1999-02-20',28,412075429,'Gerente de Negros','Pedro Leon Torres & Calle 58',1),(30111458,'Juan','Chacon','2004-05-20',20,412075429,'jefe','cerritos blanco vereda 13 entre calles 1 y 2',1);
+INSERT INTO `paciente` VALUES (3513,'joseito','asjdsaj','2024-06-19',21,'2131321231','asdasd','asdasdasdasdasdasdsadasdasdas',1),(134324,'dasdsad','asdasdsd','2024-06-07',21,'32453354','asdasdasd','asdasdasdasddasdasdsadasdasdas',1),(30128495,'juan','chacon','2024-06-17',21,'324234','fsdfd','sadsaddsadasdsadsadsadsadsadsa',1);
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,11 +55,11 @@ DROP TABLE IF EXISTS `personal`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personal` (
   `cedula` int NOT NULL,
-  `nombre` varchar(45) CHARACTER SET utf8mb3 DEFAULT NULL,
-  `apellido` varchar(45) CHARACTER SET utf8mb3 DEFAULT NULL,
-  `correo` varchar(45) CHARACTER SET utf8mb3 DEFAULT NULL,
+  `nombre` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `apellido` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `correo` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `telefono` int DEFAULT NULL,
-  `rol` varchar(45) CHARACTER SET utf8mb3 DEFAULT NULL,
+  `rol` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   PRIMARY KEY (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla del personal';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -72,7 +70,7 @@ CREATE TABLE `personal` (
 
 LOCK TABLES `personal` WRITE;
 /*!40000 ALTER TABLE `personal` DISABLE KEYS */;
-INSERT INTO `personal` VALUES (30156845,'andres','mendoza','andres@gmail.com',987654321,'2');
+INSERT INTO `personal` VALUES (22555777,'Juan','Chacon','chaconjuan439@gmail.com',412075429,'1'),(30129967,'carlos','mendoza','carlitoselmascapito@gmail.com',412075429,'1'),(30155789,'anthoan','chacon','anthoang.23@gmail.com',412075429,'2'),(30156845,'andres','mendoza','andres@gmail.com',987654321,'2');
 /*!40000 ALTER TABLE `personal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -85,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-20 21:38:18
+-- Dump completed on 2024-06-23 15:08:26
