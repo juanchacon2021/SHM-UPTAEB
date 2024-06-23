@@ -31,3 +31,17 @@ $(document).ready(function() {
     $(this).removeClass("btn-hover");
   });
 });
+
+const submitForm = document.getElementById('submitForm');
+submitForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  setTimeout(() => {
+    const registroAnimacion = document.getElementById('registro-animacion');
+    registroAnimacion.classList.add('show');
+  }, 1000);
+
+  submitForm.classList.add('d-none');
+  const mensajeExito = document.getElementById('mensajeExito');
+  mensajeExito.classList.remove('d-none');
+});

@@ -31,40 +31,6 @@
             <p class="" style="padding: .5rem; text-align: center; color: white; font-weight: 900; text-transform: uppercase; margin: 1rem 0; background-color: green; ">Paciente Eliminado Correctamente</p> 
         <?php endif; ?>
 -->
-        
-        <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="registroExitosoModalLabel">¡Paciente Registrado!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>El paciente se ha registrado exitosamente en el sistema.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="registroExitosoModalLabel">¡Paciente Modificado!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>El paciente se ha modificado exitosamente en el sistema.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <a href="?pagina=crear" class="boton">Registrar Paciente</a>

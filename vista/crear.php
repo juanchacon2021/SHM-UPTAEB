@@ -364,31 +364,31 @@
                 </div>
             </fieldset>        
 
-            <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
+
+<!-- MODAL DE REGISTRO EXITOSO -->
+
+            <button type="submit" class="botonazul btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Registrar Paciente
+            </button>
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="registroExitosoModalLabel">¡Paciente Registrado!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>El paciente se ha registrado exitosamente!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
-                    </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">¡Paciente Registrado!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="registro-animacion" class="modal-body d-flex justify-content-center">
+                            <span class="fas fa-check-circle" style="font-size: 80px; color: green;"></span>
+                            <h1 class="py-4">¡Paciente Registrado Exitosamente!</h1>
+                        </div>
                     </div>
                 </div>
             </div>
-
-<!--            <input type="submit" value="Guardar Historia Medica" class="boton float-end cursor-pointer w-80 py-2 px-4 my-10">    
-        -->
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary m-8 p-3" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-toggle="modal" data-bs-target="#registroExitosoModal" data-dismiss="modal" data-timer="5000">Registrar Paciente</button>            
-            </div>
+<!-- FIN DEL MODAL-->
         </form>
 
-        <div class="fixed-bottom d-flex justify-content-center m-4" id="scroll-to-top">
+        <div class="fixed-bottom d-flex justify-content-end m-4" id="scroll-to-top">
             <a href="#top" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38);">
                 <i class="fas fa-arrow-up"></i>
                 <span>Volver Arriba</span>
