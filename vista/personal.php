@@ -202,7 +202,7 @@
     <section class="contenedor text-zinc-900" style="padding: 2rem 0 4rem 0;">
         <h1 class="text-2xl py-6">Personal Registrado</h1>
     
-        <table class="my-2">
+        <table class="my-2 w-full">
             <thead>
                 <tr>
                     <th>Cedula</th>

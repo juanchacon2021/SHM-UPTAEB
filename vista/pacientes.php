@@ -35,7 +35,7 @@
 
         <a href="?pagina=crear" class="boton">Registrar Paciente</a>
     
-        <table class="my-10">
+        <table class="my-10 w-full">
             <thead>
                 <tr>
                     <th>Cedula</th>
