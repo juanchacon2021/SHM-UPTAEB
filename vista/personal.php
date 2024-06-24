@@ -143,28 +143,37 @@
                 </div>
 
             </fieldset>        
-            
-            <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
+
+<!-- MODAL DE REGISTRO EXITOSO -->
+
+            <button type="submit" class="boton btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Registrar Personal
+            </button>
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="registroExitosoModalLabel">¡Personal Registrado!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>El Personal se ha registrado exitosamente!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
-                    </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">¡Personal Registrado!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="registro-animacion" class="modal-body d-flex justify-content-center">
+                            <span class="fas fa-check-circle" style="font-size: 80px; color: green;"></span>
+                            <h1 class="py-4">¡Personal Registrado Exitosamente!</h1>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary m-8 p-3" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-toggle="modal" data-bs-target="#registroExitosoModal" data-dismiss="modal" data-timer="5000">Registrar Paciente</button>            
-            </div> 
+            
+<!-- FIN DEL MODAL-->
         </form>
+
+        <div class="fixed-bottom d-flex justify-content-end m-4" id="scroll-to-top">
+            <a href="#top" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38);">
+                <i class="fas fa-arrow-up"></i>
+                <span>Volver Arriba</span>
+            </a>
+        </div>
     </section>
 
     <section class="contenedor text-zinc-900" style="padding: 2rem 0 4rem 0;">
@@ -177,7 +186,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>correo</th>
-                    <th>Telefono</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
 
@@ -188,18 +197,22 @@
                     <td> <?php echo $personal['nombre']; ?> </td>
                     <td> <?php echo $personal['apellido']; ?></td>
                     <td> <?php echo $personal['correo']; ?></td>
-                    <td> <?php echo $personal['telefono']; ?></td>
+                    <td>
+                        <form action="" method="POST" class="" style="display: flex; justify-content: space-between;">
+                            
+                            <input type="hidden" name="cedula" value="<?php echo $paciente['cedula']; ?>">
+                        
+                            <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
+                        
+                            <a href="?pagina=modificarpersonal&cedula=<?php echo $personal['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
+                        </form>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
-
-        <div class="fixed-bottom d-flex justify-content-center m-4" id="scroll-to-top">
-            <a href="#top" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38);">
-                <i class="fas fa-arrow-up"></i>
-                <span>Volver Arriba</span>
-            </a>
-        </div>
     </section>
 
     <script script="js/script.js"></script>

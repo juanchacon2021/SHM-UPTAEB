@@ -61,7 +61,7 @@
                             <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
                         
-                            <a href="vista/modificar.php?cedula=<?php echo $paciente['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            <a href="?pagina=modificar&cedula=<?php echo $paciente['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
                         </form>
                     </td>

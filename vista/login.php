@@ -1,36 +1,59 @@
 <?php
+    require 'includes/database.php';
     require 'comunes/librerias.php';
 ?>
-<body>
-    <div class="flex justify-center items-center h-screen bg-fixed" id="fondo">
-        <div class="w-96 p-6 shadow-lg bg-white rounded-md  font-sans font-family: ui-sans-serif, system-ui, sans-serif">
-            <h1 class="text-3xl block text-center font-semibold"><i class="fa-solid fa-user"></i> Iniciar Sesión</h1>
-            <hr class="mt-3">
-            <div class="mt-3">
-                <label for="username" class="block text-base mb-2">Usuario</label>
-                <input type="text" id="username" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Usuario..."  />
-            </div>
-            <div class="mt-3">
-                <label for="password" class="block text-base mb-2">Contraseña</label>
-                <input type="password" id="password" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-md" placeholder="Contraseña..."  />
-            </div>
-            <div class="mt-3 flex justify-between items-center">
-                <div>
-                    <input type="checkbox">
-                    <label for="">Recuerdame</label>
-                </div>
-                <div>
-                    <a href="#" class="text-red-600 font-se">Olvidaste tu Contraseña?</a>
-                </div>
-            </div>
-            <div class="mt-5">
-                <button type="submit" class="border-2 border-red-600 bg-red-600 text-white py-1 w-full rounded-md hover:bg-white hover:text-red-800 font-semibold">Ingresar</button>
-            </div>
-        </div>
-        <div class="mt-5">
-                <button type="submit" class="border-2 border-red-600 bg-red-600 text-white py-1 w-full rounded-md hover:bg-white hover:text-red-800 font-semibold"><a href="?pagina=inicio">ir a inicio. Boton de prueba</a></button>
-            </div>
+<body id="fond">
+    <img class="wave" src="img/wave.png">
+    <div class="container-login">
+        <div class="img">
+        <img src="img/bg.svg">
     </div>
+    <div class="login-content">
+        <form method="POST" action="" class="formulario-login">
+            <center><img src="img/logo.png" alt="logo"></center>
+            <h2 class="title">BIENVENIDO</h2>
+
+            <?php
+                require 'controlador/login.php';
+            ?>
+
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <h5>Usuario</h5>
+                    <input id="usuario" type="text" class="input border-0" name="usuario">
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Contraseña</h5>
+                    <input type="password" id="input" class="input" name="clave">
+                </div>
+            </div>
+            <div class="view">
+                <div class="fas fa-eye verPassword" onclick="vista()" id="verPassword"></div>
+            </div>
+
+            <div class="text-center">
+                <a class="enlace font-italic isai5" href="">Olvidé mi contraseña</a>
+                <a class="enlace font-italic isai5" href="">Registrarse</a>
+            </div>
+            <input name="btningresar" class="btn botoncito" type="submit" value="INICIAR SESION">
+         </form>
+      </div>
+   </div>
+   <script src="js/fontawesome.js"></script>
+   <script src="js/main.js"></script>
+   <script src="js/main2.js"></script>
+   <script src="js/jquery.min.js"></script>
+   <script src="js/bootstrap.js"></script>
+   <script src="js/bootstrap.bundle.js"></script>
+
 </body>
 </html>
 

@@ -8,7 +8,7 @@
 //    }    
 
     // Base de Datos
-    require '../includes/database.php';
+    require 'includes/database.php';
     $db = conectarBD();
 
     // Obtener los datos de la propiedad
@@ -97,16 +97,16 @@
             if($resultado) {
                 // Redireccionar al usuario
             
-                header('Location: /Proyecto1/?pagina=pacientes');
+                header('Location:?pagina=pacientes');
             }
         
         }
         
     }
 
-    require '../comunes/librerias.php';
-    require '../comunes/head.php';
-    require '../comunes/modal.php';
+    require 'comunes/librerias.php';
+    require 'comunes/head.php';
+    require 'comunes/modal.php';
 ?>
 
 <body class="form-paciente bg-gray-100">
