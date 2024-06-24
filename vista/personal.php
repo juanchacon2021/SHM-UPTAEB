@@ -14,29 +14,6 @@
     // Muestra mensaje condicional
     $resultado = $_GET['resultado'] ?? null;
 
-?>
-
-<?php
-
-    // Cerrar la conexion
-    mysqli_close($db);
-?>
-
-<?php
-
-    // Importar la conexion
-    $db = conectarBD();
-
-    // Escribir el Query
-    $query = "SELECT * FROM personal";
-
-    // Consultar la BD
-    $resultadoConsulta = mysqli_query($db, $query);
-
-
-    // Muestra mensaje condicional
-    $resultado = $_GET['resultado'] ?? null;
-
     // aqui se hara el arreglo junto con mensajes de errores
     $errores = [];
 

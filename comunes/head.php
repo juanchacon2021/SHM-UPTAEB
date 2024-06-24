@@ -60,7 +60,7 @@
                     y el aparece todo lo relacionado con ese paciente de forma basica, etc
                     tambien debe tener un boton de agregar paciente...-->
                     <i class="fa-solid fa-circle-exclamation hover:text-white"></i>  
-                    <span class="text-[15px] ml-4 text-lg hover:text-white">Emergencia</span>
+                    <a href="?pagina=emergencias" ><span class="text-[15px] ml-4 text-lg hover:text-white">Emergencia</span></a>
                 </div>
 
                 <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-10000 cursor-pointer hover:text-white hover:bg-red-800 text-stone-600">
