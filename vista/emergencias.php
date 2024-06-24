@@ -86,7 +86,7 @@
     </div>
     <?php endforeach; ?>
 
-    <h1 class="text-2xl py-4">Registrar Emergencia    </h1>
+    <h1 class="text-2xl py-4">Registrar Emergencia</h1>
     <form action="?pagina=emergencias"  method="POST"  enctype="multipart/form-data">
         <fieldset class="formulario bg-white p-10 rounded-lg">
             <div>
@@ -145,7 +145,7 @@
 <section class="contenedor text-zinc-900" style="padding: 2rem 0 4rem 0;">
     <h1 class="text-2xl py-6">Emergencia Registradas</h1>
 
-    <table class="my-2">
+    <table class="my-2 w-full"">
         <thead>
             <tr>
                 <th>Cedula</th>
@@ -158,7 +158,7 @@
          <?php $sql = $db->query(" SELECT * FROM paciente p INNER JOIN emergencias e ON p.cedula = e.cedulae");
             while ($row = $sql->fetch_array()) : ?>
              <tr>
-                <td> <?php echo $row['cedula'];?></td>
+                <td style="padding: 1.5rem;"> <?php echo $row['cedula'];?></td>
                 <td> <?php echo $row['nombre'];?></td>
                 <td> <?php echo $row['fechadeingreso'];?></td>
             </tr>

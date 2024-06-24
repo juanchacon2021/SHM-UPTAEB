@@ -16,6 +16,58 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `emergencias`
+--
+
+DROP TABLE IF EXISTS `emergencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `emergencias` (
+  `cod_emergencia` int NOT NULL AUTO_INCREMENT,
+  `fechadeingreso` varchar(10) NOT NULL,
+  `horaingreso` int NOT NULL,
+  `motingreso` varchar(150) NOT NULL,
+  `cedulae` int NOT NULL,
+  PRIMARY KEY (`cod_emergencia`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `emergencias`
+--
+
+LOCK TABLES `emergencias` WRITE;
+/*!40000 ALTER TABLE `emergencias` DISABLE KEYS */;
+INSERT INTO `emergencias` VALUES (1,'23/06/2024',6,'elidan',3513),(2,'23/06/2025',6,'              hola',3513),(3,'23/06/2024',9,'le fata un testiculo              ',30128495),(4,'23/06/2024',6,'              choco',88888888),(5,'77/77/7777',9,'              holaaaaaaaaaa',30128495);
+/*!40000 ALTER TABLE `emergencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `login` (
+  `cedula` int NOT NULL,
+  `usuario` varchar(45) DEFAULT NULL,
+  `clave` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`cedula`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES (30128924,'admin','admin');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `paciente`
 --
 
@@ -83,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-23 15:08:26
+-- Dump completed on 2024-06-24 13:05:27

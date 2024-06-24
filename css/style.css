@@ -384,9 +384,14 @@ th {
     background-color: rgb(255, 255, 255);
 }
 
-tr {
-    text-align: center;
-    background-color: rgb(255, 230, 230);
+table tr:nth-child(odd) {
+	background-color: rgb(255, 230, 230);
+	text-align: center;
+}
+  
+table tr:nth-child(even) {
+	background-color: rgb(255, 197, 197);
+	text-align: center;
 }
 
 #registro-animacion {
