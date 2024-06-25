@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `consultasm`
+--
+
+DROP TABLE IF EXISTS `consultasm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `consultasm` (
+  `cod_consultasm` int NOT NULL AUTO_INCREMENT,
+  `cedulac` int NOT NULL,
+  `fechadeingreso` date NOT NULL,
+  `horaingreso` varchar(15) NOT NULL,
+  `datosdeconsulta` varchar(1000) NOT NULL,
+  PRIMARY KEY (`cod_consultasm`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consultasm`
+--
+
+LOCK TABLES `consultasm` WRITE;
+/*!40000 ALTER TABLE `consultasm` DISABLE KEYS */;
+INSERT INTO `consultasm` VALUES (1,30586749,'2024-06-06','07:05','Motivo de consulta: Dolor de garganta y tos de 3 días.\r\n\r\nSíntomas: Dolor de garganta tipo ardoroso, tos seca, leve dificultad para respirar. No hay fiebre, escalofríos, rinorrea, pus en la tos, dolor al tragar ni inflamación de ganglios en el cuello.\r\n\r\nExamen físico: Garganta roja e inflamada, amígdalas inflamadas sin pus, ganglios linfáticos del cuello levemente inflamados, pulmones sanos, corazón normal, abdomen blando, sin alteraciones neurológicas.\r\n\r\nDiagnóstico: Faringoamigdalitis aguda (posiblemente viral).\r\n\r\nPlan: Reposo, hidratación, dieta blanda, analgésicos/antipiréticos de venta libre, gárgaras con agua tibia y sal, evitar contacto con enfermos, control en 3-5 días si no hay mejoría.');
+/*!40000 ALTER TABLE `consultasm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `emergencias`
 --
 
@@ -94,7 +121,7 @@ CREATE TABLE `paciente` (
 
 LOCK TABLES `paciente` WRITE;
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (3513,'joseito','asjdsaj','2024-06-19',21,'2131321231','asdasd','asdasdasdasdasdasdsadasdasdas',1),(134324,'dasdsad','asdasdsd','2024-06-07',21,'32453354','asdasdasd','asdasdasdasddasdasdsadasdasdas',1),(30128495,'juan','chacon','2024-06-17',21,'324234','fsdfd','sadsaddsadasdsadsadsadsadsadsa',1);
+INSERT INTO `paciente` VALUES (3513,'joseito','asjdsaj','2024-06-19',21,'2131321231','asdasd','asdasdasdasdasdasdsadasdasdas',1),(134324,'dasdsad','asdasdsd','2024-06-07',21,'32453354','asdasdasd','asdasdasdasddasdasdsadasdasdas',1),(30128495,'juan','chacon','2024-06-17',21,'324234','fsdfd','sadsaddsadasdsadsadsadsadsadsa',1),(30586749,'Erick','Torrealba','2005-02-10',19,'041457887','vago','plaza simon bolivar cabudare edo lara',1);
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-24 13:05:27
+-- Dump completed on 2024-06-25 19:15:53

@@ -150,8 +150,8 @@
                 </div>
 <!-- MODAL DE REGISTRO EXITOSO -->
 
-<button type="submit" class="botonazul btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Registrar personal
+<button type="submit" class="boton btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+               Modificar Personal
             </button>
 
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -49,41 +49,22 @@
                     <!--    PERSONAL: Registra a un nuevo usuario otorgandole los permisos que el usuario mayor (Doctor) quiera que ese usuario tenga-->
                     <a href="?pagina=personal"><h1 class="cursor-pointer p-2 hover:bg-red-800 rounded-md mt-1 text-lg hover:text-white">Personal</h1></a>
 
-                    <!--    PERMISOS: Muestra la lista de permisos que tiene el usuario ingresado ejemplo
-                    Al doctor le deben aparecer todos los permisos en cambio a los usuarios que creo el doctor solo le deben
-                    aparecer los permisos que le otorgaron-->
+                    <!--    -->
                     <a href="?pagina=historias"><h1 class="cursor-pointer p-2 hover:bg-red-800 rounded-md mt-1 text-lg hover:text-white">Historias Medicas</h1></a>
                 </div>
 
                 <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:text-white hover:bg-red-800 text-stone-600">
-                    <!--    ATENCION este espacio lleva a una linea de atencion donde el usuario coloca la cedula del Paciente
-                    y el aparece todo lo relacionado con ese paciente de forma basica, etc
-                    tambien debe tener un boton de agregar paciente...-->
+                    <!--    -->
                     <i class="fa-solid fa-circle-exclamation hover:text-white"></i>  
                     <a href="?pagina=emergencias" ><span class="text-[15px] ml-4 text-lg hover:text-white">Emergencia</span></a>
                 </div>
 
                 <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-10000 cursor-pointer hover:text-white hover:bg-red-800 text-stone-600">
                     <i class="fa-solid fa-chart-simple hover:text-white"></i>
-                    <div class="flex justify-between w-full items-center hover:text-white" onclick="dropDown2()">
-                        <span class="text-[15px] ml-4 hover:text-white text-lg">Consultas</span>
-                        <span class="text-sm rotate-180 hover:text-white" id="arrow2">
-                            <i class="fa-solid fa-angle-down hover:text-white"></i>
-                        </span>
+                    <div class="flex justify-between w-full items-center hover:text-white">
+                        <a href="?pagina=consultasm"><span class="text-[15px] ml-4 hover:text-white text-lg">Consultas Medicas</span></a>
+                    </div>
                 </div>
-                </div>
-                <div class=" leading-7 text-left text-sm font-thin mt-2 w-4/5 mx-auto" id="submenu2">
-
-                    <!--    USUARIOS: Muestra la cantidad de usuarios registrados en el sistema (esta opcion solo debe ser visible para el doctor)-->
-                    <a href=""><h1 class="cursor-pointer p-2 hover:bg-red-800 hover:text-white rounded-md mt-1 text-lg">Usuarios</h1></a>
-
-                    <!--    Historias: Muestra absolutamente toda la historia medica de un paciente en especial
-                            Opino que deberia tener tambien un boton de imprimir para que se descargue en PDF
-                            toda su historia medica
-                    -->
-                    <a href=""><h1 class="cursor-pointer p-2 hover:bg-red-800 hover:text-white rounded-md mt-1 text-lg">Historias</h1></a>
-                </div>
-
                 <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-800 hover:text-white text-stone-600">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span class="text-[15px] ml-4 text-lg">Cerrar Sesión</span>
