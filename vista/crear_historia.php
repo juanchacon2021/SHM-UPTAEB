@@ -1,11 +1,16 @@
 <?php
+    $cedula = $_GET['cedula'];
+    $cedula = filter_var($cedula, FILTER_VALIDATE_INT);
+
     // Aqui debe estar la Base de Datos
     require 'includes/database.php';
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
-    $consulta = 'SELECT * FROM pacientes';
+    $consultauno = "SELECT * FROM paciente WHERE cedula = ${cedula}";
+    $consulta = 'SELECT * FROM historias';
     $resultado = mysqli_query($db, $consulta);
+    $resultado = mysqli_query($db,$consultauno);
 
     // aqui se hara el arreglo junto con mensajes de errores
     $errores = [];
@@ -13,13 +18,6 @@
     $cedula = '';
     $nombre = '';
     $apellido = '';
-    $fechanac = '';
-    $edad = '';
-    $telefono = '';
-    $ocupacion = '';
-    $direccion = '';
-    $estadocivil = '';
-    $cedulap = '';
 
 
 // aqui se Ejecutara el codigo despues de que el usuario envia el formulario
@@ -28,13 +26,6 @@
         $cedula = mysqli_real_escape_string( $db, $_POST['cedula'] );
         $nombre = mysqli_real_escape_string( $db, $_POST['nombre'] );
         $apellido = mysqli_real_escape_string( $db, $_POST['apellido'] );
-        $fechanac = mysqli_real_escape_string( $db, $_POST['fechanac'] );
-        $edad = mysqli_real_escape_string( $db, $_POST['edad'] );
-        $telefono = mysqli_real_escape_string( $db, $_POST['telefono'] );
-        $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
-        $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
-        $estadocivil = mysqli_real_escape_string( $db, $_POST['estadocivil'] );
-        $cedulap = mysqli_real_escape_string( $db, $_POST['cedulap'] );
 
 
         // Aqui se validara la informacion antes de enviar
@@ -70,18 +61,14 @@
             $errores[] = "La direccion es obligatoria y debe tener al menos 20 caracteres";
         }
         
-        if(!$estadocivil) {
+        if(!$estcivil) {
             $errores[] = "El estado civil es obligatorio";
-        }
-        
-        if(!$cedulap) {
-            $errores[] = "La cedula del registrador es obligatoria";
         }
 
         // aqui se revisara que el arreglo de errores este vacio para enviar
         if(empty($errores)) {
-            $query = " INSERT INTO pacientes(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estadocivil, cedulap ) VALUES ( '$cedula',
-            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estadocivil', '$cedulap' ) ";
+            $query = " INSERT INTO paciente(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estcivil ) VALUES ( '$cedula',
+            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estcivil' ) ";
     
             $resultado = mysqli_query($db, $query);
 
@@ -89,7 +76,7 @@
         if($resultado) {
             // Redireccionar al usuario
            
-            header('Location: ?pagina=pacientes');
+            header('Location: ?pagina=historias');
         }
         
         }
@@ -104,9 +91,9 @@
 <body class="form-paciente bg-gray-100">
 
     <section class="contenedor text-zinc-900">
-        <h1 class="text-2xl py-2">Pacientes</h1>
+        <h1 class="text-2xl py-6">Historias Medicas</h1>
 
-        <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-96">&nbsp; &nbsp; &nbsp; Agregar Paciente &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-red-600 font-bold">   Nuevo Paciente</span></p>
+        <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-[500px]">&nbsp; &nbsp; &nbsp; Agregar Historia Medica &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-red-600 font-bold">   Nueva Historia Medica</span></p>
         <p class="text-zinc-400 py-2 my-2">Las casillas con * son obligatorias</p>
 
         <a href="?pagina=pacientes" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
@@ -120,12 +107,8 @@
         <h1 class="text-2xl py-4">Informacion General</h1>
         <form action="?pagina=crear" class="ffformulario" method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
-                <div>
-                    <label for="">Cedula del Registrador</label>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedulap" id value="<?php $cedulap ?>">
-                </div>
 
-
+                <h1>Historia Medica de: <?php $nombre ?></h1>
                 <div>
                     <label for="">Nombres *</label>
                     <br>
@@ -136,52 +119,6 @@
                     <label for="">Apellidos *</label>
                     <br>
                     <input type="text" class="bg-gray-200 rounded-lg border-white" name="apellido" id="apellido" value="<?php $apellido ?>">
-                </div>
-                
-                <div>
-                    <label for="">Cedula *</label>
-                    <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedula" id="cedula" value="<?php $cedula ?>">
-                </div>
-
-                <div>
-                    <label for="">Fecha de Nacimiento *</label>
-                    <br>
-                    <input type="date" class="bg-gray-200 rounded-lg border-white" name="fechanac" id="fechanac" value="<?php $fechanac ?>">
-                </div>
-
-                <div>
-                    <label for="">Edad *</label>
-                    <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="edad" id="edad" value="<?php $edad ?>">
-                </div>
-
-                <div>
-                    <label for="">Telefono *</label>
-                    <br>
-                    <input type="tel" class="bg-gray-200 rounded-lg border-white" name="telefono" id="telefono" value="<?php $telefono ?>">
-                </div>
-
-                <div>
-                    <label for="">Ocupacion *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="ocupacion" id="ocupacion" value="<?php $ocupacion ?>">
-                </div>
-
-                <div>
-                    <label for="">Direccion *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="direccion" id="direccion" value="<?php $direccion?>">
-                </div>
-
-                <div>
-                    <label for="">Estado Civil *</label>
-                    <br>
-                    <select name="estadocivil" id="estadocivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
-                        <option value="">-- Seleccione --</option>
-                        <option value="1">Soltero</option>
-                        <option value="2">Casado</option>
-                    </select>
                 </div>
 
                 <div class="dos-columnas">

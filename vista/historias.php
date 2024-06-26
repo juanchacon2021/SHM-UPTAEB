@@ -4,7 +4,7 @@
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
-    $consulta = 'SELECT * FROM paciente';
+    $consulta = 'SELECT * FROM pacientes';
     $resultado = mysqli_query($db, $consulta);
 
     // aqui se hara el arreglo junto con mensajes de errores

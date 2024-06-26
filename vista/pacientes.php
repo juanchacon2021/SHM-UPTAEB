@@ -5,7 +5,7 @@
     $db = conectarBD();
 
     // Escribir el Query
-    $query = "SELECT * FROM paciente";
+    $query = "SELECT * FROM pacientes";
 
     // Consultar la BD
     $resultadoConsulta = mysqli_query($db, $query);
@@ -47,21 +47,21 @@
             </thead>
 
             <tbody> <!-- Mostrar los Resultados -->
-                <?php while($paciente = mysqli_fetch_assoc($resultadoConsulta)): ?>
+                <?php while($pacientes = mysqli_fetch_assoc($resultadoConsulta)): ?>
                 <tr>
-                    <td style="padding: 1.5rem;"> <?php echo $paciente['cedula']; ?> </td>
-                    <td> <?php echo $paciente['nombre']; ?> </td>
-                    <td> <?php echo $paciente['apellido']; ?></td>
-                    <td> <?php echo $paciente['edad']; ?></td>
+                    <td style="padding: 1.5rem;"> <?php echo $pacientes['cedula']; ?> </td>
+                    <td> <?php echo $pacientes['nombre']; ?> </td>
+                    <td> <?php echo $pacientes['apellido']; ?></td>
+                    <td> <?php echo $pacientes['edad']; ?></td>
                     <td>
                         <form action="" method="POST" class="" style="display: flex; justify-content: space-between;">
                             
-                            <input type="hidden" name="cedula" value="<?php echo $paciente['cedula']; ?>">
+                            <input type="hidden" name="cedula" value="<?php echo $pacientes['cedula']; ?>">
                         
                             <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
                         
-                            <a href="?pagina=modificar&cedula=<?php echo $paciente['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            <a href="?pagina=modificar&cedula=<?php echo $pacientes['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
                         </form>
                     </td>

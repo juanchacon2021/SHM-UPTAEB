@@ -4,7 +4,7 @@
     require 'includes/database.php';
     $db = conectarBD();
 
-    $consulta = "SELECT COUNT(*) AS total_pacientes FROM paciente"; 
+    $consulta = "SELECT COUNT(*) AS total_pacientes FROM pacientes"; 
     $consultados = "SELECT COUNT(*) AS total_usuarios FROM login";
     $resultadodos = $db->query($consultados);
     $resultado = $db->query($consulta);

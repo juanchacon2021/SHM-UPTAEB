@@ -1,165 +1,297 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1    Database: shm_uptaeb
--- ------------------------------------------------------
--- Server version	8.4.0
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-06-2024 a las 01:51:06
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `consultasm`
+-- Base de datos: `shm`
 --
 
-DROP TABLE IF EXISTS `consultasm`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `consultasm` (
-  `cod_consultasm` int NOT NULL AUTO_INCREMENT,
-  `cedulac` int NOT NULL,
-  `fechadeingreso` date NOT NULL,
-  `horaingreso` varchar(15) NOT NULL,
-  `datosdeconsulta` varchar(1000) NOT NULL,
-  PRIMARY KEY (`cod_consultasm`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `consultasm`
+-- Estructura de tabla para la tabla `consultas`
 --
 
-LOCK TABLES `consultasm` WRITE;
-/*!40000 ALTER TABLE `consultasm` DISABLE KEYS */;
-INSERT INTO `consultasm` VALUES (1,30586749,'2024-06-06','07:05','Motivo de consulta: Dolor de garganta y tos de 3 días.\r\n\r\nSíntomas: Dolor de garganta tipo ardoroso, tos seca, leve dificultad para respirar. No hay fiebre, escalofríos, rinorrea, pus en la tos, dolor al tragar ni inflamación de ganglios en el cuello.\r\n\r\nExamen físico: Garganta roja e inflamada, amígdalas inflamadas sin pus, ganglios linfáticos del cuello levemente inflamados, pulmones sanos, corazón normal, abdomen blando, sin alteraciones neurológicas.\r\n\r\nDiagnóstico: Faringoamigdalitis aguda (posiblemente viral).\r\n\r\nPlan: Reposo, hidratación, dieta blanda, analgésicos/antipiréticos de venta libre, gárgaras con agua tibia y sal, evitar contacto con enfermos, control en 3-5 días si no hay mejoría.');
-/*!40000 ALTER TABLE `consultasm` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `consultas` (
+  `cod_consulta` int(11) NOT NULL,
+  `fechadeconsulta` varchar(10) NOT NULL,
+  `consulta` varchar(300) DEFAULT NULL,
+  `cedulac` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `emergencias`
+-- Estructura de tabla para la tabla `emergencias`
 --
 
-DROP TABLE IF EXISTS `emergencias`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `emergencias` (
-  `cod_emergencia` int NOT NULL AUTO_INCREMENT,
+  `cod_emergencia` int(11) NOT NULL,
   `fechadeingreso` varchar(10) NOT NULL,
-  `horaingreso` int NOT NULL,
-  `motingreso` varchar(150) NOT NULL,
-  `cedulae` int NOT NULL,
-  PRIMARY KEY (`cod_emergencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `horaingreso` varchar(7) NOT NULL,
+  `motingreso` varchar(300) NOT NULL,
+  `cedulae` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `emergencias`
+-- Estructura de tabla para la tabla `ex_fisico_r`
 --
 
-LOCK TABLES `emergencias` WRITE;
-/*!40000 ALTER TABLE `emergencias` DISABLE KEYS */;
-INSERT INTO `emergencias` VALUES (1,'23/06/2024',6,'elidan',3513),(2,'23/06/2025',6,'              hola',3513),(3,'23/06/2024',9,'le fata un testiculo              ',30128495),(4,'23/06/2024',6,'              choco',88888888),(5,'77/77/7777',9,'              holaaaaaaaaaa',30128495);
-/*!40000 ALTER TABLE `emergencias` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `ex_fisico_r` (
+  `ex_fisico_r` int(11) NOT NULL,
+  `boca_abierta` varchar(100) DEFAULT NULL,
+  `boca_cerrada` varchar(100) DEFAULT NULL,
+  `oidos` varchar(100) DEFAULT NULL,
+  `cabeza_craneo` varchar(100) DEFAULT NULL,
+  `estremidad` varchar(100) DEFAULT NULL,
+  `ojos` varchar(100) DEFAULT NULL,
+  `naris` varchar(100) DEFAULT NULL,
+  `tiroides` varchar(100) DEFAULT NULL,
+  `cod_historiar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Estructura de tabla para la tabla `ex_fisico_s`
 --
 
-DROP TABLE IF EXISTS `login`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `login` (
-  `cedula` int NOT NULL,
-  `usuario` varchar(45) DEFAULT NULL,
-  `clave` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE `ex_fisico_s` (
+  `ex_fisico_s` int(11) NOT NULL,
+  `cardiovascular` varchar(100) DEFAULT NULL,
+  `respiratorio` varchar(100) DEFAULT NULL,
+  `abdomen` varchar(100) DEFAULT NULL,
+  `exremidades` varchar(100) DEFAULT NULL,
+  `recomendaciones` varchar(100) DEFAULT NULL,
+  `neurologicos` varchar(100) DEFAULT NULL,
+  `resparaclinicos` varchar(100) DEFAULT NULL,
+  `tratamientos` varchar(100) DEFAULT NULL,
+  `paraclinicosind` varchar(100) DEFAULT NULL,
+  `cod_historias` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `login`
+-- Estructura de tabla para la tabla `historias`
 --
 
-LOCK TABLES `login` WRITE;
-/*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES (30128924,'admin','admin');
-/*!40000 ALTER TABLE `login` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `historias` (
+  `cod_historia` int(11) NOT NULL,
+  `hea` varchar(100) DEFAULT NULL,
+  `antecmadre` varchar(100) DEFAULT NULL,
+  `antecpadre` varchar(100) DEFAULT NULL,
+  `antechermano` varchar(100) DEFAULT NULL,
+  `antecpersonal` varchar(100) DEFAULT NULL,
+  `alergias` varchar(100) DEFAULT NULL,
+  `quirurgico` varchar(100) DEFAULT NULL,
+  `transsanguineo` varchar(100) DEFAULT NULL,
+  `cedulapa` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `paciente`
+-- Estructura de tabla para la tabla `pacientes`
 --
 
-DROP TABLE IF EXISTS `paciente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `paciente` (
-  `cedula` int NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellido` varchar(45) DEFAULT NULL,
+CREATE TABLE `pacientes` (
+  `cedula` varchar(10) NOT NULL,
+  `nombre` varchar(15) NOT NULL,
+  `apellido` varchar(15) NOT NULL,
   `fechanac` date DEFAULT NULL,
-  `edad` int DEFAULT NULL,
-  `telefono` varchar(20) DEFAULT NULL,
-  `ocupacion` varchar(200) DEFAULT NULL,
+  `edad` int(11) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
-  `estcivil` int DEFAULT NULL,
-  PRIMARY KEY (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `ocupacion` varchar(30) DEFAULT NULL,
+  `estadocivil` int(11) DEFAULT NULL,
+  `habtoxico` varchar(30) DEFAULT NULL,
+  `cedulape` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `paciente`
+-- Estructura de tabla para la tabla `personal`
 --
 
-LOCK TABLES `paciente` WRITE;
-/*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (3513,'joseito','asjdsaj','2024-06-19',21,'2131321231','asdasd','asdasdasdasdasdasdsadasdasdas',1),(134324,'dasdsad','asdasdsd','2024-06-07',21,'32453354','asdasdasd','asdasdasdasddasdasdsadasdasdas',1),(30128495,'juan','chacon','2024-06-17',21,'324234','fsdfd','sadsaddsadasdsadsadsadsadsadsa',1),(30586749,'Erick','Torrealba','2005-02-10',19,'041457887','vago','plaza simon bolivar cabudare edo lara',1);
-/*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `personal`
---
-
-DROP TABLE IF EXISTS `personal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personal` (
-  `cedula` int NOT NULL,
-  `nombre` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `apellido` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `correo` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `telefono` int DEFAULT NULL,
-  `rol` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  PRIMARY KEY (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla del personal';
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `cedulap` varchar(10) NOT NULL,
+  `nombre` varchar(15) NOT NULL,
+  `apellido` varchar(15) NOT NULL,
+  `correo` varchar(30) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `rol` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `personal`
+-- Estructura de tabla para la tabla `roles`
 --
 
-LOCK TABLES `personal` WRITE;
-/*!40000 ALTER TABLE `personal` DISABLE KEYS */;
-INSERT INTO `personal` VALUES (22555777,'Juan','Chacon','chaconjuan439@gmail.com',412075429,'1'),(30129967,'carlos','mendoza','carlitoselmascapito@gmail.com',412075429,'1'),(30155789,'anthoan','chacon','anthoang.23@gmail.com',412075429,'2'),(30156845,'andres','mendoza','andres@gmail.com',987654321,'2');
-/*!40000 ALTER TABLE `personal` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+CREATE TABLE `roles` (
+  `rol` varchar(10) NOT NULL,
+  `cargo` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD PRIMARY KEY (`cod_consulta`),
+  ADD KEY `cedulac` (`cedulac`);
+
+--
+-- Indices de la tabla `emergencias`
+--
+ALTER TABLE `emergencias`
+  ADD PRIMARY KEY (`cod_emergencia`),
+  ADD KEY `cedulae` (`cedulae`);
+
+--
+-- Indices de la tabla `ex_fisico_r`
+--
+ALTER TABLE `ex_fisico_r`
+  ADD PRIMARY KEY (`ex_fisico_r`),
+  ADD KEY `cod_historiar` (`cod_historiar`);
+
+--
+-- Indices de la tabla `ex_fisico_s`
+--
+ALTER TABLE `ex_fisico_s`
+  ADD PRIMARY KEY (`ex_fisico_s`),
+  ADD KEY `cod_historias` (`cod_historias`);
+
+--
+-- Indices de la tabla `historias`
+--
+ALTER TABLE `historias`
+  ADD PRIMARY KEY (`cod_historia`),
+  ADD KEY `cedulapa` (`cedulapa`);
+
+--
+-- Indices de la tabla `pacientes`
+--
+ALTER TABLE `pacientes`
+  ADD PRIMARY KEY (`cedula`),
+  ADD KEY `cedulape` (`cedulape`);
+
+--
+-- Indices de la tabla `personal`
+--
+ALTER TABLE `personal`
+  ADD PRIMARY KEY (`cedulap`),
+  ADD KEY `rol` (`rol`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`rol`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  MODIFY `cod_consulta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `emergencias`
+--
+ALTER TABLE `emergencias`
+  MODIFY `cod_emergencia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `ex_fisico_r`
+--
+ALTER TABLE `ex_fisico_r`
+  MODIFY `ex_fisico_r` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `ex_fisico_s`
+--
+ALTER TABLE `ex_fisico_s`
+  MODIFY `ex_fisico_s` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `historias`
+--
+ALTER TABLE `historias`
+  MODIFY `cod_historia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`cedulac`) REFERENCES `pacientes` (`cedula`);
+
+--
+-- Filtros para la tabla `emergencias`
+--
+ALTER TABLE `emergencias`
+  ADD CONSTRAINT `emergencias_ibfk_1` FOREIGN KEY (`cedulae`) REFERENCES `pacientes` (`cedula`);
+
+--
+-- Filtros para la tabla `ex_fisico_r`
+--
+ALTER TABLE `ex_fisico_r`
+  ADD CONSTRAINT `ex_fisico_r_ibfk_1` FOREIGN KEY (`cod_historiar`) REFERENCES `historias` (`cod_historia`);
+
+--
+-- Filtros para la tabla `ex_fisico_s`
+--
+ALTER TABLE `ex_fisico_s`
+  ADD CONSTRAINT `ex_fisico_s_ibfk_1` FOREIGN KEY (`cod_historias`) REFERENCES `historias` (`cod_historia`);
+
+--
+-- Filtros para la tabla `historias`
+--
+ALTER TABLE `historias`
+  ADD CONSTRAINT `historias_ibfk_1` FOREIGN KEY (`cedulapa`) REFERENCES `pacientes` (`cedula`);
+
+--
+-- Filtros para la tabla `pacientes`
+--
+ALTER TABLE `pacientes`
+  ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`cedulape`) REFERENCES `personal` (`cedulap`);
+
+--
+-- Filtros para la tabla `personal`
+--
+ALTER TABLE `personal`
+  ADD CONSTRAINT `personal_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`rol`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2024-06-25 19:15:53

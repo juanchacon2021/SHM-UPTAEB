@@ -63,7 +63,7 @@
 
         // aqui se revisara que el arreglo de errores este vacio para enviar
         if(empty($errores)) {
-            $query = " INSERT INTO personal(cedula, nombre, apellido, correo, telefono, rol ) VALUES ( '$cedula',
+            $query = " INSERT INTO personal(cedulap, nombre, apellido, correo, telefono, rol ) VALUES ( '$cedulap',
             '$nombre', '$apellido', '$correo', '$telefono', '$rol' ) ";
     
             $resultado = mysqli_query($db, $query);
@@ -193,7 +193,7 @@
             <tbody> <!-- Mostrar los Resultados -->
                 <?php while($personal = mysqli_fetch_assoc($resultadoConsulta)): ?>
                 <tr>
-                    <td class="py-4"> <?php echo $personal['cedula']; ?> </td>
+                    <td class="py-4"> <?php echo $personal['cedulap']; ?> </td>
                     <td> <?php echo $personal['nombre']; ?> </td>
                     <td> <?php echo $personal['apellido']; ?></td>
                     <td> <?php echo $personal['correo']; ?></td>
@@ -205,7 +205,7 @@
                             <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
                         
-                            <a href="?pagina=modificarpersonal&cedula=<?php echo $personal['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            <a href="?pagina=modificarpersonal&cedula=<?php echo $personal['cedulap']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
                         </form>
                     </td>
