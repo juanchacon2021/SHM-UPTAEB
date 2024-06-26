@@ -4,7 +4,7 @@
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
-    $consulta = 'SELECT * FROM pacientes';
+    $consulta = 'SELECT * FROM paciente';
     $resultado = mysqli_query($db, $consulta);
 
     // aqui se hara el arreglo junto con mensajes de errores
@@ -18,8 +18,7 @@
     $telefono = '';
     $ocupacion = '';
     $direccion = '';
-    $estadocivil = '';
-    $cedulap = '';
+    $estcivil = '';
 
 
 // aqui se Ejecutara el codigo despues de que el usuario envia el formulario
@@ -33,8 +32,7 @@
         $telefono = mysqli_real_escape_string( $db, $_POST['telefono'] );
         $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
         $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
-        $estadocivil = mysqli_real_escape_string( $db, $_POST['estadocivil'] );
-        $cedulap = mysqli_real_escape_string( $db, $_POST['cedulap'] );
+        $estcivil = mysqli_real_escape_string( $db, $_POST['estcivil'] );
 
 
         // Aqui se validara la informacion antes de enviar
@@ -70,18 +68,14 @@
             $errores[] = "La direccion es obligatoria y debe tener al menos 20 caracteres";
         }
         
-        if(!$estadocivil) {
+        if(!$estcivil) {
             $errores[] = "El estado civil es obligatorio";
-        }
-        
-        if(!$cedulap) {
-            $errores[] = "La cedula del registrador es obligatoria";
         }
 
         // aqui se revisara que el arreglo de errores este vacio para enviar
         if(empty($errores)) {
-            $query = " INSERT INTO pacientes(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estadocivil, cedulap ) VALUES ( '$cedula',
-            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estadocivil', '$cedulap' ) ";
+            $query = " INSERT INTO paciente(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estcivil ) VALUES ( '$cedula',
+            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estcivil' ) ";
     
             $resultado = mysqli_query($db, $query);
 
@@ -120,12 +114,6 @@
         <h1 class="text-2xl py-4">Informacion General</h1>
         <form action="?pagina=crear" class="ffformulario" method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
-                <div>
-                    <label for="">Cedula del Registrador</label>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedulap" id value="<?php $cedulap ?>">
-                </div>
-
-
                 <div>
                     <label for="">Nombres *</label>
                     <br>
@@ -177,7 +165,7 @@
                 <div>
                     <label for="">Estado Civil *</label>
                     <br>
-                    <select name="estadocivil" id="estadocivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
+                    <select name="estcivil" id="estcivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
                         <option value="">-- Seleccione --</option>
                         <option value="1">Soltero</option>
                         <option value="2">Casado</option>

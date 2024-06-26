@@ -16,6 +16,7 @@
 
     // aqui se hara el arreglo junto con mensajes de errores
     $errores = [];
+    $cod_emergencia ='';
     $cedulae = '';
     $fechadeingreso = '';
     $horaingreso = '';
@@ -86,7 +87,7 @@
     </div>
     <?php endforeach; ?>
 
-    <h1 class="text-2xl py-4">Registrar Emergencia</h1>
+    <h1 class="text-2xl py-4">Registrar Emergencia    </h1>
     <form action="?pagina=emergencias"  method="POST"  enctype="multipart/form-data">
         <fieldset class="formulario bg-white p-10 rounded-lg">
             <div>
@@ -145,12 +146,13 @@
 <section class="contenedor text-zinc-900" style="padding: 2rem 0 4rem 0;">
     <h1 class="text-2xl py-6">Emergencia Registradas</h1>
 
-    <table class="my-2 w-full">
+    <table class="my-2">
         <thead>
             <tr>
                 <th>Cedula</th>
                 <th>Nombre</th>
                 <th>Fecha</th>
+                <th>Acciones</th>
             </tr>
         </thead>
 
@@ -158,10 +160,32 @@
          <?php $sql = $db->query(" SELECT * FROM paciente p INNER JOIN emergencias e ON p.cedula = e.cedulae");
             while ($row = $sql->fetch_array()) : ?>
              <tr>
-                <td style="padding: 1.5rem;"> <?php echo $row['cedula'];?></td>
+                <td> <?php echo $row['cedula'];?></td>
                 <td> <?php echo $row['nombre'];?></td>
                 <td> <?php echo $row['fechadeingreso'];?></td>
+                <td>    
+                        <form action="" method="POST" class="" style="display: flex; justify-content: space-between;">                        
+                            <input type="hidden" name="cedula" value="<?php echo $row['cedulae']; ?>">
+                            
+                            <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editar<?php echo $row['cod_emergencia'];?>"style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;" >Consultar</a>
+                              
+                            
+                            <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
+                            
+
+                            
+                            <a href="?pagina=modificar&cedula=<?php echo $paciente['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
+
+
+                        </form>
+                        
+                </td>
+                <?php include 'vista/modificar_e.php'; ?>
             </tr>
+            
             <?php endwhile; ?>
         </tbody>
     </table>
@@ -172,7 +196,11 @@
             <span>Volver Arriba</span>
         </a>
     </div>
+    
 </section>
+<!-- Modal mostar  -->
+<!-- Modal -->
+ 
 
 
 <script script="js/script.js"></script>

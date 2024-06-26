@@ -42,6 +42,7 @@
             <div class="text-center">
                 <a class="enlace font-italic isai5" href="">Olvidé mi contraseña</a>
                 <a class="enlace font-italic isai5" href="">Registrarse</a>
+                <a class="enlace font-italic isai5" href="?pagina=emergencias">saltar</a>
             </div>
             <input name="btningresar" class="btn botoncito" type="submit" value="INICIAR SESION">
          </form>
