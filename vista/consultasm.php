@@ -156,7 +156,7 @@
         </thead>
 
         <tbody> <!-- Mostrar los Resultados -->
-         <?php $sql = $db->query(" SELECT * FROM paciente p INNER JOIN consultasm e ON p.cedula = e.cedulac");
+         <?php $sql = $db->query(" SELECT * FROM pacientes p INNER JOIN consultasm e ON p.cedula = e.cedulac");
             while ($row = $sql->fetch_array()) : ?>
              <tr>
                 <td style="padding: 1.5rem;"> <?php echo $row['cedula'];?></td>

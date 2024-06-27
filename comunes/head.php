@@ -53,6 +53,8 @@
                     Al doctor le deben aparecer todos los permisos en cambio a los usuarios que creo el doctor solo le deben
                     aparecer los permisos que le otorgaron-->
                     <a href=""><h1 class="cursor-pointer p-2 hover:bg-red-800 rounded-md mt-1 text-lg hover:text-white">Permisos</h1></a>
+                
+                    <a href="?pagina=historias"><h1 class="cursor-pointer p-2 hover:bg-red-800 rounded-md mt-1 text-lg hover:text-white">Historias</h1></a>
                 </div>
 
                 <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:text-white hover:bg-red-800 text-stone-600">
@@ -65,12 +67,10 @@
 
                 <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-10000 cursor-pointer hover:text-white hover:bg-red-800 text-stone-600">
                     <i class="fa-solid fa-chart-simple hover:text-white"></i>
-                    <div class="flex justify-between w-full items-center hover:text-white" onclick="dropDown2()">
-                        <span class="text-[15px] ml-4 hover:text-white text-lg">Consultas</span>
-                        <span class="text-sm rotate-180 hover:text-white" id="arrow2">
-                            <i class="fa-solid fa-angle-down hover:text-white"></i>
-                        </span>
-                </div>
+                    <div class="flex justify-between w-full items-center hover:text-white">
+                        <a href="?pagina=consultasm"><span class="text-[15px] ml-4 hover:text-white text-lg">Consultas</span></a>
+                        
+                    </div>
                 </div>
                 <div class=" leading-7 text-left text-sm font-thin mt-2 w-4/5 mx-auto" id="submenu2">
 

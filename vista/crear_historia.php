@@ -111,7 +111,7 @@
     <section class="contenedor text-zinc-900">
         <h1 class="text-2xl py-2">Historias Medicas</h1>
 
-        <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-96">&nbsp; &nbsp; &nbsp; Agregar Historias Medicas &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-red-600 font-bold">   Nueva Historia</span></p>
+        <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-full">&nbsp; &nbsp; &nbsp; Agregar Historias Medicas &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-red-600 font-bold">   Nueva Historia</span></p>
         <p class="text-zinc-400 py-2 my-2">Las casillas con * son obligatorias</p>
 
         <a href="?pagina=crear_historia" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
