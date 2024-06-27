@@ -16,34 +16,221 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `paciente`
+-- Table structure for table `consultasm`
 --
 
-DROP TABLE IF EXISTS `paciente`;
+DROP TABLE IF EXISTS `consultasm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `paciente` (
+CREATE TABLE `consultasm` (
+  `cod_consulta` int NOT NULL AUTO_INCREMENT,
+  `fechadeingreso` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `cedulac` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `datosdeconsulta` varchar(1500) COLLATE utf8mb4_general_ci NOT NULL,
+  `horaingreso` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`cod_consulta`),
+  KEY `cedulac` (`cedulac`),
+  CONSTRAINT `consultasm_ibfk_1` FOREIGN KEY (`cedulac`) REFERENCES `pacientes` (`cedula`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consultasm`
+--
+
+LOCK TABLES `consultasm` WRITE;
+/*!40000 ALTER TABLE `consultasm` DISABLE KEYS */;
+INSERT INTO `consultasm` VALUES (2,'2004-02-04','11222333','dasdasdsadas','04:05');
+/*!40000 ALTER TABLE `consultasm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `emergencias`
+--
+
+DROP TABLE IF EXISTS `emergencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `emergencias` (
+  `cod_emergencia` int NOT NULL AUTO_INCREMENT,
+  `fechadeingreso` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `horaingreso` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `motingreso` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `cedulae` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`cod_emergencia`),
+  KEY `cedulae` (`cedulae`),
+  CONSTRAINT `emergencias_ibfk_1` FOREIGN KEY (`cedulae`) REFERENCES `pacientes` (`cedula`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `emergencias`
+--
+
+LOCK TABLES `emergencias` WRITE;
+/*!40000 ALTER TABLE `emergencias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `emergencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ex_fisico_r`
+--
+
+DROP TABLE IF EXISTS `ex_fisico_r`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ex_fisico_r` (
+  `ex_fisico_r` int NOT NULL AUTO_INCREMENT,
+  `boca_abierta` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `boca_cerrada` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `oidos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cabeza_craneo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `estremidad` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ojos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `naris` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tiroides` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cod_historiar` int NOT NULL,
+  PRIMARY KEY (`ex_fisico_r`),
+  KEY `cod_historiar` (`cod_historiar`),
+  CONSTRAINT `ex_fisico_r_ibfk_1` FOREIGN KEY (`cod_historiar`) REFERENCES `historias` (`cod_historia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ex_fisico_r`
+--
+
+LOCK TABLES `ex_fisico_r` WRITE;
+/*!40000 ALTER TABLE `ex_fisico_r` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ex_fisico_r` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ex_fisico_s`
+--
+
+DROP TABLE IF EXISTS `ex_fisico_s`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ex_fisico_s` (
+  `ex_fisico_s` int NOT NULL AUTO_INCREMENT,
+  `cardiovascular` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `respiratorio` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `abdomen` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `exremidades` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `recomendaciones` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `neurologicos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `resparaclinicos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tratamientos` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `paraclinicosind` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cod_historias` int NOT NULL,
+  PRIMARY KEY (`ex_fisico_s`),
+  KEY `cod_historias` (`cod_historias`),
+  CONSTRAINT `ex_fisico_s_ibfk_1` FOREIGN KEY (`cod_historias`) REFERENCES `historias` (`cod_historia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ex_fisico_s`
+--
+
+LOCK TABLES `ex_fisico_s` WRITE;
+/*!40000 ALTER TABLE `ex_fisico_s` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ex_fisico_s` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `historias`
+--
+
+DROP TABLE IF EXISTS `historias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `historias` (
+  `cod_historia` int NOT NULL AUTO_INCREMENT,
+  `hea` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `antecmadre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `antecpadre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `antechermano` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `antecpersonal` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `alergias` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `quirurgico` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `transsanguineo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cedulapa` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`cod_historia`),
+  KEY `cedulapa` (`cedulapa`),
+  CONSTRAINT `historias_ibfk_1` FOREIGN KEY (`cedulapa`) REFERENCES `pacientes` (`cedula`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `historias`
+--
+
+LOCK TABLES `historias` WRITE;
+/*!40000 ALTER TABLE `historias` DISABLE KEYS */;
+INSERT INTO `historias` VALUES (34,'usa','usa','usa',NULL,NULL,NULL,NULL,NULL,'12345678');
+/*!40000 ALTER TABLE `historias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `login` (
   `cedula` int NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellido` varchar(45) DEFAULT NULL,
-  `fechanac` date DEFAULT NULL,
-  `edad` int DEFAULT NULL,
-  `telefono` varchar(20) DEFAULT NULL,
-  `ocupacion` varchar(200) DEFAULT NULL,
-  `direccion` varchar(200) DEFAULT NULL,
-  `estcivil` int DEFAULT NULL,
+  `usuario` varchar(45) DEFAULT NULL,
+  `clave` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `paciente`
+-- Dumping data for table `login`
 --
 
-LOCK TABLES `paciente` WRITE;
-/*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES (3513,'joseito','asjdsaj','2024-06-19',21,'2131321231','asdasd','asdasdasdasdasdasdsadasdasdas',1),(134324,'dasdsad','asdasdsd','2024-06-07',21,'32453354','asdasdasd','asdasdasdasddasdasdsadasdasdas',1),(30128495,'juan','chacon','2024-06-17',21,'324234','fsdfd','sadsaddsadasdsadsadsadsadsadsa',1);
-/*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+INSERT INTO `login` VALUES (30128924,'admin','admin');
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pacientes`
+--
+
+DROP TABLE IF EXISTS `pacientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pacientes` (
+  `cedula` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `apellido` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `fechanac` date DEFAULT NULL,
+  `edad` int NOT NULL,
+  `telefono` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `direccion` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ocupacion` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `estadocivil` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `habtoxico` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `cedulap` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`cedula`),
+  KEY `cedulape` (`cedulap`),
+  CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`cedulap`) REFERENCES `personal` (`cedulap`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pacientes`
+--
+
+LOCK TABLES `pacientes` WRITE;
+/*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
+INSERT INTO `pacientes` VALUES ('11222333','Eduin','Patiño','2024-06-04',22,'04120754296','cerritos blanco vereda 13 entre calles 1 y 2','jefe','1',NULL,'31'),('11555888','Juan','Chacon','2024-06-06',21,'04120754296','cerritos blanco vereda 13 entre calles 1 y 2','jefe','1',NULL,'31'),('12345678','miguel','antonio','2024-06-12',22,'04120754296','cerritos blanco vereda 13 entre calles 1 y 2','jefe','1',NULL,'31'),('22111444','jose','Meneses','2024-06-21',21,'04120754296','cerritos blanco vereda 13 entre calles 1 y 2','jefe','1',NULL,'31'),('3251','jasd','asjd','2024-06-19',21,'13241','cerritos blanco vereda 13 entre calles 1 y 2','jefe','1',NULL,'31');
+/*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -54,14 +241,16 @@ DROP TABLE IF EXISTS `personal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `personal` (
-  `cedula` int NOT NULL,
-  `nombre` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `apellido` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `correo` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  `telefono` int DEFAULT NULL,
-  `rol` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-  PRIMARY KEY (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='tabla del personal';
+  `cedulap` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `apellido` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `correo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `telefono` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `rol` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`cedulap`),
+  KEY `rol` (`rol`),
+  CONSTRAINT `personal_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`rol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,8 +259,32 @@ CREATE TABLE `personal` (
 
 LOCK TABLES `personal` WRITE;
 /*!40000 ALTER TABLE `personal` DISABLE KEYS */;
-INSERT INTO `personal` VALUES (22555777,'Juan','Chacon','chaconjuan439@gmail.com',412075429,'1'),(30129967,'carlos','mendoza','carlitoselmascapito@gmail.com',412075429,'1'),(30155789,'anthoan','chacon','anthoang.23@gmail.com',412075429,'2'),(30156845,'andres','mendoza','andres@gmail.com',987654321,'2');
+INSERT INTO `personal` VALUES ('11222333','Ricardo','Perez','ricarditoperecito@gmail.com','04120754296','1'),('31','anthoan','gonzalez','gggggggg','66666666','2');
 /*!40000 ALTER TABLE `personal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `rol` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `cargo` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`rol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES ('1','enfermera'),('2','doctor'),('3','admin');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -83,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-23 15:08:26
+-- Dump completed on 2024-06-27 14:47:34
