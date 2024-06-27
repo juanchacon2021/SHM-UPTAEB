@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `consultasm`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `consultasm` (
   `cod_consulta` int NOT NULL AUTO_INCREMENT,
-  `fechadeingreso` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `fechadeingreso` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `cedulac` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `datosdeconsulta` varchar(1500) COLLATE utf8mb4_general_ci NOT NULL,
   `horaingreso` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE `login` (
   `usuario` varchar(45) DEFAULT NULL,
   `clave` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
