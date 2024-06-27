@@ -118,27 +118,10 @@
             </div>
 
 
-        </fieldset>    
-        
-        <div class="modal fade" id="registroExitosoModal" tabindex="-1" aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registroExitosoModalLabel">¡emergencias Registrado!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>El emergencias se ha registrado exitosamente!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-dismiss="modal" onclick="redireccionarInicio()">Volver al Inicio</button>
-                </div>
-                </div>
-            </div>
-        </div>
+        </fieldset>            
 
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary m-8 p-3" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-toggle="modal" data-bs-target="#registroExitosoModal" data-dismiss="modal" data-timer="5000">Registrar Emergencia</button>            
+            <button type="submit" class="btn btn-primary m-8 p-3" style="background-color: rgb(220 38 38); border: solid rgb(220 38 38); hover:background-color: rgb(153, 27, 27);" data-bs-toggle="modal" data-bs-target="#verificación" data-dismiss="modal" data-timer="5000">Registrar Emergencia</button>            
         </div> 
     </form>
 </section>
@@ -157,7 +140,7 @@
         </thead>
 
         <tbody> <!-- Mostrar los Resultados -->
-         <?php $sql = $db->query(" SELECT * FROM paciente p INNER JOIN emergencias e ON p.cedula = e.cedulae");
+         <?php $sql = $db->query(" SELECT * FROM pacientes p INNER JOIN emergencias e ON p.cedula = e.cedulae");
             while ($row = $sql->fetch_array()) : ?>
              <tr>
                 <td> <?php echo $row['cedula'];?></td>
@@ -199,6 +182,24 @@
     
 </section>
 <!-- Modal mostar  -->
+<button type="submit" class="botonazul btn btn-primary m-8 p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Registrar Paciente
+            </button>
+
+            <div class="modal fade" id="verificacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header"style="background: -webkit-linear-gradient(90deg, #ff0000,#ff7575);/* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(90deg, #ff0000,#ff7575);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
+                            <h5 class="modal-title" id="staticBackdropLabel">¡Emergencia Registrada!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="registro-animacion" class="modal-body d-flex justify-content-center">
+                            <span class="fas fa-check-circle" style="font-size: 80px; color: green;"></span>
+                            <h1 class="py-4">¡Emergencia Registrada Exitosamente!</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <!-- Modal -->
  
 

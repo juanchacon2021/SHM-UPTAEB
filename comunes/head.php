@@ -81,7 +81,7 @@
                             Opino que deberia tener tambien un boton de imprimir para que se descargue en PDF
                             toda su historia medica
                     -->
-                    <a href=""><h1 class="cursor-pointer p-2 hover:bg-red-800 hover:text-white rounded-md mt-1 text-lg">Historias</h1></a>
+                    <a href="?pagina=historias"><h1 class="cursor-pointer p-2 hover:bg-red-800 hover:text-white rounded-md mt-1 text-lg">Historias</h1></a>
                 </div>
 
                 <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-red-800 hover:text-white text-stone-600">

@@ -17,7 +17,7 @@
     // aqui se hara el arreglo junto con mensajes de errores
     $errores = [];
 
-    $cedula = '';
+    $cedulap = '';
     $nombre = '';
     $apellido = '';
     $correo = '';
@@ -28,7 +28,7 @@
 // aqui se Ejecutara el codigo despues de que el usuario envia el formulario
         
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $cedula = mysqli_real_escape_string( $db, $_POST['cedula'] );
+        $cedulap = mysqli_real_escape_string( $db, $_POST['cedulap'] );
         $nombre = mysqli_real_escape_string( $db, $_POST['nombre'] );
         $apellido = mysqli_real_escape_string( $db, $_POST['apellido'] );
         $correo = mysqli_real_escape_string( $db, $_POST['correo'] );
@@ -63,7 +63,7 @@
 
         // aqui se revisara que el arreglo de errores este vacio para enviar
         if(empty($errores)) {
-            $query = " INSERT INTO personal(cedula, nombre, apellido, correo, telefono, rol ) VALUES ( '$cedula',
+            $query = " INSERT INTO personal(cedulap, nombre, apellido, correo, telefono, rol ) VALUES ( '$cedulap',
             '$nombre', '$apellido', '$correo', '$telefono', '$rol' ) ";
     
             $resultado = mysqli_query($db, $query);
@@ -100,7 +100,7 @@
         <?php endforeach; ?>
 
         <h1 class="text-2xl py-4">Informacion General</h1>
-        <form action="?pagina=personal"  method="POST"  enctype="multipart/form-data">
+        <form action="?pagina=personal" method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
                 <div>
                     <label for="">Nombres *</label>
@@ -117,7 +117,7 @@
                 <div>
                     <label for="">Cedula *</label>
                     <br>
-                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedula" id="cedula" value="<?php $cedula ?>">
+                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedulap" id="cedulap" value="<?php $cedulap ?>">
                 </div>
 
                 <div>
@@ -179,7 +179,7 @@
     <section class="contenedor text-zinc-900" style="padding: 2rem 0 4rem 0;">
         <h1 class="text-2xl py-6">Personal Registrado</h1>
     
-        <table class="my-2">
+        <table class="my-2 w-full">
             <thead>
                 <tr>
                     <th>Cedula</th>
@@ -193,19 +193,19 @@
             <tbody> <!-- Mostrar los Resultados -->
                 <?php while($personal = mysqli_fetch_assoc($resultadoConsulta)): ?>
                 <tr>
-                    <td class="py-4"> <?php echo $personal['cedula']; ?> </td>
+                    <td class="py-4"> <?php echo $personal['cedulap']; ?> </td>
                     <td> <?php echo $personal['nombre']; ?> </td>
                     <td> <?php echo $personal['apellido']; ?></td>
                     <td> <?php echo $personal['correo']; ?></td>
                     <td>
                         <form action="" method="POST" class="" style="display: flex; justify-content: space-between;">
                             
-                            <input type="hidden" name="cedula" value="<?php echo $paciente['cedula']; ?>">
+                            <input type="hidden" name="cedulap" value="<?php echo $paciente['cedulap']; ?>">
                         
                             <input type="submit" class="" value="Eliminar" style=" background-color: rgb(220 38 38);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(220 38 38); color: white; width: 5.5rem;">
                         
-                            <a href="?pagina=modificarpersonal&cedula=<?php echo $personal['cedula']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
+                            <a href="?pagina=modificarpersonal&cedula=<?php echo $personal['cedulap']; ?>" style="font-family: 'Sora'; background-color: rgb(16, 175, 63);
                             border-radius: 0.5rem; border: 0.5rem solid rgb(16, 175, 63); color: white; margin: 0rem 1rem;">Modificar</a>
                         </form>
                     </td>

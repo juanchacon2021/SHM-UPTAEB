@@ -1,31 +1,42 @@
 <?php
-    $cedula = $_GET['cedula'];
-    $cedula = filter_var($cedula, FILTER_VALIDATE_INT);
-
     // Aqui debe estar la Base de Datos
     require 'includes/database.php';
     $db = conectarBD();
 
+    if (mysqli_connect_error()) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
     // Aqui se va a consultar para obtener los pacientes de la base de datos
-    $consultauno = "SELECT * FROM paciente WHERE cedula = ${cedula}";
     $consulta = 'SELECT * FROM historias';
     $resultado = mysqli_query($db, $consulta);
-    $resultado = mysqli_query($db,$consultauno);
 
     // aqui se hara el arreglo junto con mensajes de errores
     $errores = [];
 
-    $cedula = '';
-    $nombre = '';
-    $apellido = '';
+    $hea = '';
+    $antecmadre = '';
+    $antecpadre = '';
+    $antechermano = '';
+    $antecpersonal = '';
+    $alergias = '';
+    $quirurgico = '';
+    $transsanguineo = '';
+    $cedulapa = '';
 
 
 // aqui se Ejecutara el codigo despues de que el usuario envia el formulario
         
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $cedula = mysqli_real_escape_string( $db, $_POST['cedula'] );
-        $nombre = mysqli_real_escape_string( $db, $_POST['nombre'] );
-        $apellido = mysqli_real_escape_string( $db, $_POST['apellido'] );
+        $hea = mysqli_real_escape_string( $db, $_POST['hea'] );
+         $antecmadre = mysqli_real_escape_string( $db, $_POST['antecmadre'] );
+         $antecpadre = mysqli_real_escape_string( $db, $_POST['antecpadre'] );
+         $antechermano = mysqli_real_escape_string( $db, $_POST['antechernmano'] );
+         $antecpersonal = mysqli_real_escape_string( $db, $_POST['antecpersonal'] );
+         $alergias = mysqli_real_escape_string( $db, $_POST['alergias'] );
+         $quirurgico = mysqli_real_escape_string( $db, $_POST['quirurgico'] );
+         $transsanguineo = mysqli_real_escape_string( $db, $_POST['transsanguineo'] );
+         $cedulapa = mysqli_real_escape_string( $db, $_POST['cedulapa'] );
 
 
         // Aqui se validara la informacion antes de enviar
@@ -61,23 +72,30 @@
             $errores[] = "La direccion es obligatoria y debe tener al menos 20 caracteres";
         }
         
-        if(!$estcivil) {
+        if(!$estadocivil) {
             $errores[] = "El estado civil es obligatorio";
+        }
+        
+        if(!$cedulap) {
+            $errores[] = "La cedula del registrador es obligatorio";
         }
 
         // aqui se revisara que el arreglo de errores este vacio para enviar
         if(empty($errores)) {
-            $query = " INSERT INTO paciente(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estcivil ) VALUES ( '$cedula',
-            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estcivil' ) ";
-    
+            $query = " INSERT INTO historias(hea, antecmadre, antecpadre, antechermano, antecpersonal, alergias, quirurgico, transsanguineo, cedulapa) VALUES 
+             ('$hea', '$antecmadre', '$antecpadre', '$antechermano', '$antecpersonal', '$alergias', '$quirurgico', '$transsanguineo','$cedulapa' )";
+
             $resultado = mysqli_query($db, $query);
+            
 
         // Aqui se Redireccionara al usuario
-        if($resultado) {
-            // Redireccionar al usuario
-           
-            header('Location: ?pagina=historias');
-        }
+            if($resultado) {
+                // Redireccionar al usuario
+            
+                header('Location: ?pagina=historias');
+            } else {
+                die("Error inserting data: " . mysqli_error($db));
+            }
         
         }
     }
@@ -91,12 +109,12 @@
 <body class="form-paciente bg-gray-100">
 
     <section class="contenedor text-zinc-900">
-        <h1 class="text-2xl py-6">Historias Medicas</h1>
+        <h1 class="text-2xl py-2">Historias Medicas</h1>
 
-        <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-[500px]">&nbsp; &nbsp; &nbsp; Agregar Historia Medica &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-red-600 font-bold">   Nueva Historia Medica</span></p>
+        <p class="text-zinc-400 bg-white border-8 rounded-lg border-white w-96">&nbsp; &nbsp; &nbsp; Agregar Historias Medicas &nbsp; &nbsp; > &nbsp; &nbsp;<span class="text-red-600 font-bold">   Nueva Historia</span></p>
         <p class="text-zinc-400 py-2 my-2">Las casillas con * son obligatorias</p>
 
-        <a href="?pagina=pacientes" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
+        <a href="?pagina=crear_historia" class="boton px-4 cursor-pointer" style="margin-top: 200px;">Volver</a>
 
         <?php foreach ($errores as $error): ?>
         <div class="error" style="padding: .5rem; text-align: center; color: white; font-weight: 900; text-transform: uppercase; margin: 1rem 0; background-color: rgb(255, 28, 28);">
@@ -105,34 +123,29 @@
         <?php endforeach; ?>
 
         <h1 class="text-2xl py-4">Informacion General</h1>
-        <form action="?pagina=crear" class="ffformulario" method="POST"  enctype="multipart/form-data">
+        <form action="?pagina=historias" class="ffformulario" method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
 
-                <h1>Historia Medica de: <?php $nombre ?></h1>
-                <div>
-                    <label for="">Nombres *</label>
+                <div class="">
+                    <label for="">Inserte la cedula del paciente *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="nombre" id="nombre" value="<?php $nombre ?>">
-                </div>
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="cedulapa" id="cedulapa" value="<?php $cedulapa ?>">
+                </div>    
 
-                <div>
-                    <label for="">Apellidos *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="apellido" id="apellido" value="<?php $apellido ?>">
-                </div>
-
-                <div class="dos-columnas">
+                <div class="">
                     <label for="">Motivo de Consulta *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="motivoconsulta" id="motivoconsulta" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="motivoconsulta" id="motivoconsulta" value="<?php $motivoconsulta ?>">
                 </div>
 
                 <div class="">
                     <label for="">H.E.A *</label>
                     <br>
-                    <textarea name="hea" id="hea" class="bg-gray-200 rounded-lg border-white"></textarea>
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="hea" id="hea" value="<?php $hea ?>">
                 </div>
+                
             </fieldset>
+
             
 
             <legend class="text-2xl py-4 my-4">Antecedentes Patologicos Familiares</legend>
@@ -141,19 +154,19 @@
                 <div class="">
                     <label for="">Madre *</label>
                     <br>
-                    <textarea name="madre" id="madre" class="bg-gray-200 rounded-lg border-white" cols="32"></textarea>
+                    <textarea name="antecmadre" id="madre" class="bg-gray-200 rounded-lg border-white" cols="32"><?php $antecmadre ?></textarea>
                 </div>
 
                 <div class="">
                     <label for="">Padre *</label>
                     <br>
-                    <textarea name="padre" id="padre" class="bg-gray-200 rounded-lg border-white" cols="32"></textarea>
+                    <textarea name="antecpadre" id="padre" class="bg-gray-200 rounded-lg border-white" cols="32"><?php $antecpadre ?></textarea>
                 </div>
 
                 <div class="">
                     <label for="">Hermano *</label>
                     <br>
-                    <textarea name="hermano" id="hermano" class="bg-gray-200 rounded-lg border-white" cols="32"></textarea>
+                    <textarea name="antechermano" id="hermano" class="bg-gray-200 rounded-lg border-white" cols="32"><?php $antechermano ?></textarea>
                 </div>
             </fieldset>
 
@@ -163,29 +176,29 @@
                 <div class="cuatro-columnas">
                     <label for="">Antecedentes Patologicos *</label>
                     <br>
-                    <textarea name="antpat" id="antpat" class="bg-gray-200 rounded-lg border-white" cols="80"></textarea>
+                    <textarea name="antecpersonal" id="antpat" class="bg-gray-200 rounded-lg border-white" cols="80"><?php $antecpersonal ?></textarea>
                 </div>
 
                 <div>
                     <label for="">Alergia Medicamentos Indique cual *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="alergia" id="alergia" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="alergias" id="alergia" value="<?php $alergias ?>">
                 </div>
 
                 <div>
-                    <label for="">Quirurgicos *</label>
+                    <label for="">quirurgico *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="quirurgicos" id="quirurgicos" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="quirurgico" id="quirurgico" value="<?php $quirurgico ?>">
                 </div>
 
                 <div>
                     <label for="">Transfuciones Sanguineas *</label>
                     <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="transfuciones" id="transfuciones" value="<?php ?>">
+                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="transsanguineo" id="transfuciones" value="<?php $transsanguineo ?>">
                 </div>
                 
             </fieldset>
-
+            
             <legend class="text-2xl py-4 my-4">Historia Psicosocial</legend>
 
             <fieldset class="formulario-tres bg-white p-10 rounded-lg">
@@ -324,12 +337,12 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">¡Paciente Registrado!</h5>
+                            <h5 class="modal-title" id="staticBackdropLabel">¡Historia Medica Registrada!</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div id="registro-animacion" class="modal-body d-flex justify-content-center">
                             <span class="fas fa-check-circle" style="font-size: 80px; color: green;"></span>
-                            <h1 class="py-4">¡Paciente Registrado Exitosamente!</h1>
+                            <h1 class="py-4">¡Historia Medica Registrada Exitosamente!</h1>
                         </div>
                     </div>
                 </div>
@@ -344,7 +357,7 @@
             </a>
         </div>
     </section>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
 </body>

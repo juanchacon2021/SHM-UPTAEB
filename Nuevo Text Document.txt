@@ -1,0 +1,15 @@
+while ($row = $result->fetch_assoc()) {
+        $nombre = $row['nombre'];
+        $apellido = $row['apellido'];
+        $cedula = $row['cedula'];
+
+        $hea = 'hea';
+        $antecmadre = 'antecmadre';
+        $antecpadre = 'antecpadre';
+        $antechermano = 'antechermano';
+        $antecpersonal = 'antecpersonal';
+        $alergias = 'alergias';
+        $quirurgico = 'quirurgico';
+        $transsanguineo = 'transanguineo';
+        $cedulapa = 'cedulapa';
+    }

@@ -4,7 +4,7 @@
     $db = conectarBD();
 
     // Aqui se va a consultar para obtener los pacientes de la base de datos
-    $consulta = 'SELECT * FROM paciente';
+    $consulta = 'SELECT * FROM pacientes';
     $resultado = mysqli_query($db, $consulta);
 
     // aqui se hara el arreglo junto con mensajes de errores
@@ -18,7 +18,8 @@
     $telefono = '';
     $ocupacion = '';
     $direccion = '';
-    $estcivil = '';
+    $estadocivil = '';
+    $cedulap = '';
 
 
 // aqui se Ejecutara el codigo despues de que el usuario envia el formulario
@@ -32,7 +33,8 @@
         $telefono = mysqli_real_escape_string( $db, $_POST['telefono'] );
         $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
         $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
-        $estcivil = mysqli_real_escape_string( $db, $_POST['estcivil'] );
+        $estadocivil = mysqli_real_escape_string( $db, $_POST['estadocivil'] );
+        $cedulap = mysqli_real_escape_string( $db, $_POST['cedulap'] );
 
 
         // Aqui se validara la informacion antes de enviar
@@ -68,14 +70,18 @@
             $errores[] = "La direccion es obligatoria y debe tener al menos 20 caracteres";
         }
         
-        if(!$estcivil) {
+        if(!$estadocivil) {
             $errores[] = "El estado civil es obligatorio";
+        }
+        
+        if(!$cedulap) {
+            $errores[] = "La cedula del registrador es obligatorio";
         }
 
         // aqui se revisara que el arreglo de errores este vacio para enviar
         if(empty($errores)) {
-            $query = " INSERT INTO paciente(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estcivil ) VALUES ( '$cedula',
-            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estcivil' ) ";
+            $query = " INSERT INTO pacientes(cedula, nombre, apellido, fechanac, edad, telefono, ocupacion, direccion, estadocivil, cedulap ) VALUES ( '$cedula',
+            '$nombre', '$apellido', '$fechanac', '$edad', '$telefono', '$ocupacion', '$direccion', '$estadocivil', '$cedulap' ) ";
     
             $resultado = mysqli_query($db, $query);
 
@@ -114,6 +120,12 @@
         <h1 class="text-2xl py-4">Informacion General</h1>
         <form action="?pagina=crear" class="ffformulario" method="POST"  enctype="multipart/form-data">
             <fieldset class="formulario bg-white p-10 rounded-lg">
+
+                <div>
+                    <label for="">Cedula del Registrador</label>
+                    <input type="number" class="bg-gray-200 rounded-lg border-white" name="cedulap" id value="<?php $cedulape ?>">
+                </div>
+
                 <div>
                     <label for="">Nombres *</label>
                     <br>
@@ -165,7 +177,7 @@
                 <div>
                     <label for="">Estado Civil *</label>
                     <br>
-                    <select name="estcivil" id="estcivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
+                    <select name="estadocivil" id="estadocivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
                         <option value="">-- Seleccione --</option>
                         <option value="1">Soltero</option>
                         <option value="2">Casado</option>
@@ -185,184 +197,6 @@
                 </div>
             </fieldset>
             
-
-            <legend class="text-2xl py-4 my-4">Antecedentes Patologicos Familiares</legend>
-
-            <fieldset class="formulario-dos bg-white p-10 rounded-lg">
-                <div class="">
-                    <label for="">Madre *</label>
-                    <br>
-                    <textarea name="madre" id="madre" class="bg-gray-200 rounded-lg border-white" cols="32"></textarea>
-                </div>
-
-                <div class="">
-                    <label for="">Padre *</label>
-                    <br>
-                    <textarea name="padre" id="padre" class="bg-gray-200 rounded-lg border-white" cols="32"></textarea>
-                </div>
-
-                <div class="">
-                    <label for="">Hermano *</label>
-                    <br>
-                    <textarea name="hermano" id="hermano" class="bg-gray-200 rounded-lg border-white" cols="32"></textarea>
-                </div>
-            </fieldset>
-
-            <legend class="text-2xl py-4 my-4">Antecedentes Patologicos Personales</legend>
-
-            <fieldset class="formulario-tres bg-white p-10 rounded-lg">
-                <div class="cuatro-columnas">
-                    <label for="">Antecedentes Patologicos *</label>
-                    <br>
-                    <textarea name="antpat" id="antpat" class="bg-gray-200 rounded-lg border-white" cols="80"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Alergia Medicamentos Indique cual *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="alergia" id="alergia" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Quirurgicos *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="quirurgicos" id="quirurgicos" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Transfuciones Sanguineas *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="transfuciones" id="transfuciones" value="<?php ?>">
-                </div>
-                
-            </fieldset>
-
-            <legend class="text-2xl py-4 my-4">Historia Psicosocial</legend>
-
-            <fieldset class="formulario-tres bg-white p-10 rounded-lg">
-                <div class="cuatro-columnas">
-                    <label for="">Describa: *</label>
-                    <br>
-                    <textarea name="psicosocial" id="psicosocial" class="bg-gray-200 rounded-lg border-white" cols="80"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Habitos Toxicos *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="habtoxico" id="habtoxico" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Examen Fisico General *</label>
-                    <br>
-                    <textarea name="examenfisicog" id="examenfisicog" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-            </fieldset>                
-                
-            <legend class="text-2xl py-4 my-4">Examen Fisico Regional</legend>
-
-            <fieldset class="formulario bg-white p-10 rounded-lg">
-                <div>
-                    <label for="">Cabeza-Craneo *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="cabeza" id="cabeza" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Ojos *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="ojos" id="cabeza" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Nariz *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="nariz" id="cabeza" value="<?php ?>">
-                </div>
-                
-                <div>
-                    <label for="">Oidos *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="oidos" id="cabeza" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Boca Cerrada *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name=bocacerrada" id="cabeza" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Boca Abierta *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="bocaabierta" id="cabeza" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Tiroides *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="tiroides" id="cabeza" value="<?php ?>">
-                </div>
-
-                <div>
-                    <label for="">Extremidades *</label>
-                    <br>
-                    <input type="text" class="bg-gray-200 rounded-lg border-white" name="extremidades" id="cabeza" value="<?php ?>">
-                </div>
-            </fieldset>
-                
-            <legend class="text-2xl py-4 my-4">Examen Fisico por Sistemas o Aparatos</legend>
-
-            <fieldset class="formulario-tres bg-white p-10 rounded-lg">
-                <div>
-                    <label for="">Aparato Respiratorio</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Aparato Cardiovascular</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Abdomen</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-                
-                <div>
-                    <label for="">Extremidades</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Neurologico</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Paraclinicos Indicados</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Resultado de los Paraclinicos</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-
-                <div>
-                    <label for="">Recomendaciones</label>
-                    <br>
-                    <textarea name="" id="" class="bg-gray-200 rounded-lg border-white"></textarea>
-                </div>
-            </fieldset>        
 
 
 <!-- MODAL DE REGISTRO EXITOSO -->

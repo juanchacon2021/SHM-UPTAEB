@@ -12,7 +12,7 @@
     $db = conectarBD();
 
     // Obtener los datos de la propiedad
-    $consulta = "SELECT * FROM paciente WHERE cedula = ${cedula}";
+    $consulta = "SELECT * FROM pacientes WHERE cedula = ${cedula}";
     $resultado = mysqli_query($db, $consulta);
     $paciente = mysqli_fetch_assoc($resultado);
 
@@ -32,7 +32,7 @@
     $telefono = $paciente['telefono'];
     $ocupacion = $paciente['ocupacion'];
     $direccion = $paciente['direccion'];
-    $estcivil = $paciente['estcivil'];
+    $estadocivil = $paciente['estadocivil'];
 
 // Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -45,7 +45,7 @@
         $telefono = mysqli_real_escape_string( $db, $_POST['telefono'] );
         $ocupacion = mysqli_real_escape_string( $db, $_POST['ocupacion'] );
         $direccion = mysqli_real_escape_string( $db, $_POST['direccion'] );
-        $estcivil = mysqli_real_escape_string( $db, $_POST['estcivil'] );
+        $estadocivil = mysqli_real_escape_string( $db, $_POST['estadocivil'] );
 
         // Aqui se validara la informacion antes de enviar
         if(!$cedula) {
@@ -80,15 +80,15 @@
             $errores[] = "La direccion es obligatoria y debe tener al menos 20 caracteres";
         }
         
-        if(!$estcivil) {
+        if(!$estadocivil) {
             $errores[] = "El estado civil es obligatorio";
         }
 
 
         // Revisar que el array de errores este vacio
         if(empty($errores)) {
-            $query = " UPDATE paciente SET nombre = '{$nombre}', apellido = '{$apellido}', fechanac = '{$fechanac}', edad = '{$edad}', telefono = '{$telefono}', 
-            ocupacion = '{$ocupacion}', direccion = '{$direccion}', estcivil = '{$estcivil}' WHERE cedula = ${cedula} ";
+            $query = " UPDATE pacientes SET nombre = '{$nombre}', apellido = '{$apellido}', fechanac = '{$fechanac}', edad = '{$edad}', telefono = '{$telefono}', 
+            ocupacion = '{$ocupacion}', direccion = '{$direccion}', estadocivil = '{$estadocivil}' WHERE cedula = ${cedula} ";
 
 
             $resultado = mysqli_query($db, $query);
@@ -179,7 +179,7 @@
                 <div>
                     <label for="">Estado Civil *</label>
                     <br>
-                    <select name="estcivil" id="estcivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
+                    <select name="estadocivil" id="estadocivil" class="bg-gray-200 rounded-lg border-white" style="font-family: 'Arial';">
                         <option value="">-- Seleccione --</option>
                         <option value="1">Soltero</option>
                         <option value="2">Casado</option>

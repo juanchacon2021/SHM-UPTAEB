@@ -8,5 +8,6 @@ function conectarBD() : mysqli {
         exit;
     }
 
+    
     return $db;
 }
